@@ -1,0 +1,43 @@
+/* Uncomment to install soho font. Unzip fonts/soho.zip too  */
+
+
+// Fonts variables
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 700 !default;
+$font_path: '../fonts/';
+
+@font-face {
+    font-family: 'Soho';
+    src: url($font_path + 'soho/SohoGothicPro-Regular.eot');
+    src: url($font_path + 'soho/SohoGothicPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url($font_path + 'soho/SohoGothicPro-Regular.woff2') format('woff2'),
+        url($font_path + 'soho/SohoGothicPro-Regular.woff') format('woff'),
+        url($font_path + 'soho/SohoGothicPro-Regular.ttf') format('truetype'),
+        url($font_path + 'soho/SohoGothicPro-Regular.svg#SohoGothicPro-Regular') format('svg');
+    font-weight: $font-weight-regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Soho';
+    src: url($font_path + 'soho/SohoGothicPro-Medium.eot');
+    src: url($font_path + 'soho/SohoGothicPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url($font_path + 'soho/SohoGothicPro-Medium.woff2') format('woff2'),
+        url($font_path + 'soho/SohoGothicPro-Medium.woff') format('woff'),
+        url($font_path + 'soho/SohoGothicPro-Medium.ttf') format('truetype'),
+        url($font_path + 'soho/SohoGothicPro-Medium.svg#SohoGothicPro-Medium') format('svg');
+    font-weight: $font-weight-medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Soho';
+    src: url($font_path + 'soho/SohoGothicPro-Bold.eot');
+    src: url($font_path + 'soho/SohoGothicPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url($font_path + 'soho/SohoGothicPro-Bold.woff') format('woff'),
+        url($font_path + 'soho/SohoGothicPro-Bold.ttf') format('truetype'),
+        url($font_path + 'soho/SohoGothicPro-Bold.svg#SohoGothicPro-Bold') format('svg');
+    font-weight: $font-weight-bold;
+    font-style: normal;
+}
