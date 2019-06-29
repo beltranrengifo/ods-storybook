@@ -24,7 +24,7 @@ types.forEach(type => {
   const template = `
     <storybook-template
       :negative="negative"
-      :codeSample="'${htmlDemo}'">
+      :codeSample="\${htmlDemo}">
       <ods-button
         @click="handleClick"
         type="${type}"

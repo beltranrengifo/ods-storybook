@@ -4,10 +4,7 @@ import { action } from '@storybook/addon-actions'
 import OdsButton from '@onesait/onesait-ds/lib/button'
 import iconsArray from '@onesait/onesait-ds/lib/icon.json'
 import { capitalize } from '../utils/functions'
-import demo from '../md/demo.md'
-
-import htmlDemo from '../samples/button.html'
-import StorybookTemplate from '../utils/StorybookTemplate'
+import OdsButtonMd from '../md/button.md'
 
 const icons = iconsArray.map(e => `ods-icon-${e}`)
 icons.unshift('No icon')
@@ -22,9 +19,9 @@ const types = [
 
 types.forEach(type => {
   const template = `
-    <storybook-template
-      :negative="negative"
-      :codeSample="'${htmlDemo}'">
+    <div
+      class="ods-storybook__basic-template"
+      :class="{'is-negative': negative}">
       <ods-button
         @click="handleClick"
         type="${type}"
@@ -37,15 +34,14 @@ types.forEach(type => {
         :negative="negative">
         {{ text }}
       </ods-button>
-    </storybook-template>
+    </div>
   `
 
   stories.add(
     capitalize(type),
     () => ({
       components: {
-        'ods-button': OdsButton,
-        'storybook-template': StorybookTemplate
+        'ods-button': OdsButton
       },
       template: template,
       methods: {
@@ -84,7 +80,7 @@ types.forEach(type => {
       }
     }),
     {
-      notes: demo
+      notes: 'A very simple example of addon notes'
     }
   )
 })

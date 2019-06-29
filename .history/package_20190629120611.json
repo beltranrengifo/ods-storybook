@@ -11,9 +11,6 @@
   },
   "dependencies": {
     "@onesait/onesait-ds": "0.1.88",
-    "@pickra/copy-code-block": "^1.1.5",
-    "highlight.js": "^9.15.8",
-    "markdown-loader": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -31,7 +28,6 @@
     "core-js": "^2.6.9",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "html-loader": "^0.5.5",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-storybook": "^0.6.1",

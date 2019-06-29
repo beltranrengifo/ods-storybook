@@ -5,7 +5,7 @@ import OdsButton from '@onesait/onesait-ds/lib/button'
 import iconsArray from '@onesait/onesait-ds/lib/icon.json'
 import { capitalize } from '../utils/functions'
 import demo from '../md/demo.md'
-
+import copyCodeBlock from '@pickra/copy-code-block'
 import htmlDemo from '../samples/button.html'
 import StorybookTemplate from '../utils/StorybookTemplate'
 
@@ -24,7 +24,7 @@ types.forEach(type => {
   const template = `
     <storybook-template
       :negative="negative"
-      :codeSample="'${htmlDemo}'">
+      :codeSample="${htmlDemo}">
       <ods-button
         @click="handleClick"
         type="${type}"
