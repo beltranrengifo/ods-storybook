@@ -4,19 +4,17 @@ module.exports = async ({ config, mode }) => {
       test: /\.md$/,
       use: [
         { loader: 'html-loader' },
-        {
-          loader: 'markdown-loader',
-          options: {
-            /* your options here */
-          }
-        }
+        { loader: 'markdown-loader' }
       ]
     },
     {
       test: /\.(html)$/,
-      use: {
-        loader: 'html-loader'
-      }
+      use: { loader: 'html-loader' }
+    },
+    {
+      test: /\.story\.jsx?$/,
+      loaders: [require.resolve('@storybook/addon-storysource/loader')],
+      enforce: 'pre'
     }
   )
   return config

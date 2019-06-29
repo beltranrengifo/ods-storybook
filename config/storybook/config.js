@@ -5,6 +5,9 @@ import { withNotes } from '@storybook/addon-notes'
 import onesaitTheme from '@/storybook/utils/onesait-theme'
 import '@onesait/onesait-ds/lib/theme-onesait/index.css'
 import '@/assets/scss/storybook.scss'
+import Vue from 'vue'
+import VueHighlightJS from 'vue-highlightjs'
+import ODS from '@onesait/onesait-ds'
 
 const req = require.context('../../src/storybook/stories', true, /.story.js$/)
 const loadStories = () => req.keys().forEach(filename => req(filename))
@@ -19,3 +22,5 @@ addParameters({
 })
 
 configure(loadStories, module)
+Vue.use(VueHighlightJS)
+Vue.use(ODS)
