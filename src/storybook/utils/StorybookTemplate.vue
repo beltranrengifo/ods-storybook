@@ -6,22 +6,26 @@
       <slot/>
     </ods-module>
     <ods-accordion>
-      <ods-accordion-item title="Sample code" name="sample-code">
+      <ods-accordion-item title="Sample code">
         <div class="ods-storybook__code-samples">
           <pre
             v-for="type in sampleTypes"
             :key="type"
             v-highlightjs="getSampleString(type)">
             <code :class="type"></code>
-            <ods-button
-              negative
-              size="small"
-              @click="sampleToClipboard(type, getSampleString(type))"
-              class="ods-storybook__copy-button"
-              circle
-              icon="ods-icon-copy"
-              :ref="`copyButton-${type}`">
-            </ods-button>
+            <ods-tooltip
+              content="Copy"
+              placement="top-start">
+              <ods-button
+                negative
+                size="small"
+                @click="sampleToClipboard(type, getSampleString(type))"
+                class="ods-storybook__copy-button"
+                circle
+                icon="ods-icon-copy"
+                :ref="`copyButton-${type}`">
+              </ods-button>
+            </ods-tooltip>
             <textarea
               class="ods-storybook__clippy"
               aria-hidden="true"
@@ -84,6 +88,9 @@ export default {
   .ods-storybook {
     &__basic-template {
       padding: 36px;
+      @media screen and (max-width: 1023px) {
+        padding: 8px;
+      }
     }
     &__component {
       &.is-negative {
@@ -102,12 +109,18 @@ export default {
       display: flex;
       min-height: 1px;
       margin: 0 -4px;
+      @media screen and (max-width: 1023px) {
+        flex-direction: column;
+      }
       pre {
         width: 33.33%;
         height: 440px;
         margin: 0;
         overflow: hidden;
         position: relative;
+        @media screen and (max-width: 1023px) {
+          width: 100%;
+        }
       }
     }
     &__copy-button {
@@ -127,7 +140,7 @@ export default {
       position: absolute;
       bottom: -12px;
       right: 16px;
-      color: $--color-neutral-1;
+      color: $--color-neutral-2;
       font-family: 'Soho', Helvetica, Arial, sans-serif!important;
     }
   }

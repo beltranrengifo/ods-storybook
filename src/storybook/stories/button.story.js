@@ -85,7 +85,9 @@ types.forEach(type => {
       }
     }),
     {
-      notes: buttonMd
+      notes: {
+        markdown: buttonMd
+      }
     }
   )
 })
