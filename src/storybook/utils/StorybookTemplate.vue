@@ -77,6 +77,14 @@ export default {
         type: 'success'
       })
     }
+  },
+  mounted () {
+    const template = decodeURIComponent(
+        this.$slots.default[0]
+        .componentInstance.$root
+        .STORYBOOK_COMPONENT.extendOptions
+        .STORYBOOK_WRAPS.extendOptions.template)
+    console.log(this.$slots.default[0])
   }
 }
 </script>

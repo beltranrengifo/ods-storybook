@@ -22,10 +22,7 @@ const types = [
 types.forEach(type => {
   const template = `
   <storybook-template
-    :negative="negative"
-    :html="'${encodeURIComponent(buttonSamples.html)}'"
-    :pug="'${encodeURIComponent(buttonSamples.pug)}'"
-    :js="'${encodeURIComponent(buttonSamples.js)}'">
+    :negative="negative">
     <ods-button
       @click="handleClick"
       type="${type}"
