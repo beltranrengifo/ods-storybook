@@ -1,4 +1,3 @@
-
 module.exports = async ({ config, mode }) => {
   config.module.rules.push(
     {
@@ -7,7 +6,7 @@ module.exports = async ({ config, mode }) => {
         { loader: 'html-loader' },
         {
           loader: 'markdown-loader',
-          options: { pedantic: true }
+          options: {}
         }
       ]
     },
@@ -17,7 +16,10 @@ module.exports = async ({ config, mode }) => {
     },
     {
       test: /\.story\.jsx?$/,
-      loaders: [require.resolve('@storybook/addon-storysource/loader')],
+      loader: require.resolve('@storybook/addon-storysource/loader'),
+      options: {
+        uglyCommentsRegex: [/^eslint-.*/, /^global.*/]
+      },
       enforce: 'pre'
     }
   )

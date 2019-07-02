@@ -1,0 +1,7 @@
+.addon-notes-container pre code {
+  background: #f0f0f0 !important;
+  border: 1px solid #D5DCE0 !important;
+  padding: 24px !important;
+  max-width: 100%;
+  overflow-x: scroll;
+}
