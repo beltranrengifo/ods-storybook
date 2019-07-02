@@ -6,32 +6,54 @@
       <slot/>
     </ods-module>
     <ods-accordion>
-      <ods-accordion-item title="Sample code">
+      <ods-accordion-item title="Sample code (initial state)">
         <div class="ods-storybook__code-samples">
           <pre
-            v-for="type in sampleTypes"
-            :key="type"
-            v-highlightjs="getSampleString(type)">
-            <code :class="type"></code>
+            v-highlightjs="html">
+            <code class="html"></code>
             <ods-tooltip
               content="Copy"
               placement="top-start">
               <ods-button
                 negative
                 size="small"
-                @click="sampleToClipboard(type, getSampleString(type))"
+                @click="sampleToClipboard('html', html)"
                 class="ods-storybook__copy-button"
                 circle
                 icon="ods-icon-copy"
-                :ref="`copyButton-${type}`">
+                ref="copyButton-html">
               </ods-button>
             </ods-tooltip>
             <textarea
               class="ods-storybook__clippy"
               aria-hidden="true"
-              :ref="`clippy-${type}`"></textarea>
+              ref="clippy-html"></textarea>
             <span class="ods-storybook__type-badge">
-              {{ type }}
+              html
+            </span>
+          </pre>
+          <pre
+            v-highlightjs="js">
+            <code class="js"></code>
+            <ods-tooltip
+              content="Copy"
+              placement="top-start">
+              <ods-button
+                negative
+                size="small"
+                @click="sampleToClipboard('js', js)"
+                class="ods-storybook__copy-button"
+                circle
+                icon="ods-icon-copy"
+                ref="copyButton-js">
+              </ods-button>
+            </ods-tooltip>
+            <textarea
+              class="ods-storybook__clippy"
+              aria-hidden="true"
+              ref="clippy-js"></textarea>
+            <span class="ods-storybook__type-badge">
+              js
             </span>
           </pre>
         </div>
@@ -47,28 +69,21 @@ export default {
     negative: {
       type: Boolean,
       default: false
-    },
-    html: {
-      type: String
-    },
-    pug: {
-      type: String
-    },
-    js: {
-      type: String
     }
   },
+
   data () {
     return {
-      sampleTypes: ['html', 'pug', 'js']
+      html: '',
+      js: '',
+      root: null
     }
   },
+
   methods: {
-    getSampleString (type) {
-      return decodeURIComponent(this[type])
-    },
+
     sampleToClipboard (type, str) {
-      const clip = this.$refs[`clippy-${type}`][0]
+      const clip = this.$refs[`clippy-${type}`]
       clip.value = str
       clip.select()
       document.execCommand('copy')
@@ -76,15 +91,36 @@ export default {
         title: 'Copied!',
         type: 'success'
       })
+    },
+
+    getSampleStrings () {
+      const root = this.$slots.default[0].componentInstance.$root
+      const storyRoot = root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions
+      let dataFunction = storyRoot.data
+      let data = dataFunction && dataFunction.toString().replace('function', '').replace(';', '').trim()
+      let props = ''
+      if (root.STORYBOOK_VALUES) {
+        let i = 0
+        let l = Object.keys(root.STORYBOOK_VALUES).length
+        for (let key in root.STORYBOOK_VALUES) {
+          props += `${key}: ${this.getPropStrValue(root.STORYBOOK_VALUES[key])}`
+          i++
+          props += i < l ? ',\n  ' : '\n'
+        }
+      }
+      this.html = storyRoot.template || '// No template'
+      this.js += data ? `// data\n{\n  ${data}\n}` : ''
+      this.js += data ? `\n` : ''
+      this.js += `// props\n{\n  ${props}}`
+    },
+
+    getPropStrValue (val) {
+      return typeof val === 'string' ? `'${val}'` : val
     }
   },
+
   mounted () {
-    const template = decodeURIComponent(
-        this.$slots.default[0]
-        .componentInstance.$root
-        .STORYBOOK_COMPONENT.extendOptions
-        .STORYBOOK_WRAPS.extendOptions.template)
-    console.log(this.$slots.default[0])
+    this.getSampleStrings()
   }
 }
 </script>
@@ -121,7 +157,7 @@ export default {
         flex-direction: column;
       }
       pre {
-        width: 33.33%;
+        width: 50%;
         height: 440px;
         margin: 0;
         overflow: hidden;
