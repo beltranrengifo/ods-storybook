@@ -1,0 +1,72 @@
+<template>
+  <div class="ods-storybook__basic-template">
+    <ods-module
+      class="ods-storybook__container ods-storybook__component"
+      :class="{'is-negative': negative}">
+      <slot/>
+    </ods-module>
+    <samples-accordion :root="root"/>
+  </div>
+</template>
+
+<script>
+import SamplesAccordion from './SamplesAccordion'
+
+export default {
+  name: 'StoryBookTemplate',
+
+  components: {
+    SamplesAccordion
+  },
+
+  props: {
+    negative: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data () {
+    return {
+      root: null
+    }
+  },
+
+  mounted () {
+    this.root = this.$slots.default[0].componentInstance.$root
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  @import '@/assets/scss/_variables.scss';
+
+  .ods-storybook {
+    &__basic-template {
+      padding: 36px;
+      @media screen and (max-width: 1023px) {
+        padding: 8px;
+      }
+    }
+    &__component {
+      &.is-negative {
+        background: $--color-onesait-logo;
+      }
+      & > /deep/ .ods-module__body {
+        padding: 0;
+      }
+    }
+    &__container {
+      padding: 32px;
+      margin-bottom: 48px;
+      border: 1px solid  $--color-neutral-5;
+    }
+    
+  }
+  h6 {
+    margin: 0;
+  }
+  /deep/ .ods-actions-menu__button--text {
+    width: 120px;
+  }
+</style>

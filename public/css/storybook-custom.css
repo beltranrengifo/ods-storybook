@@ -2,6 +2,12 @@
   background: #f0f0f0 !important;
   border: 1px solid #D5DCE0 !important;
   padding: 24px !important;
+  width: 100%;
   max-width: 100%;
   overflow-x: scroll;
+}
+
+.addon-notes-container table {
+  width: 100%;
+  max-width: 100%;
 }

@@ -2,10 +2,11 @@ import { storiesOf } from '@storybook/vue'
 import { text, boolean, select, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import OdsButton from '@onesait/onesait-ds/lib/button'
-import iconsArray from '@onesait/onesait-ds/lib/icon.json'
 import { capitalize } from '../utils/functions'
 import buttonMd from '../md/button.md'
-import StorybookTemplate from '../utils/StorybookTemplate'
+import StorybookTemplate from '../components/StorybookTemplate'
+import getIcons from '../utils/icons'
+const icons = getIcons('ods-icon-')
 
 const stories = storiesOf('ODS/Button', module)
 
@@ -19,28 +20,23 @@ const types = [
   'danger'
 ]
 
-const icons = {}
-icons['No icon'] = ''
-for (let icon in iconsArray) icons[iconsArray[icon]] = `ods-icon-${iconsArray[icon]}`
-const multiOption = { display: 'select' }
-
 types.forEach(type => {
   const template = `
-  <storybook-template
+<storybook-template
+  :negative="negative">
+  <ods-button
+    @click="handleClick"
+    type="${type}"
+    :disabled="disabled"
+    :circle="circle"
+    :loading="loading"
+    :icon="icon.includes('ods-icon') ? icon : ''"
+    :size="size"
+    :full="full"
     :negative="negative">
-    <ods-button
-      @click="handleClick"
-      type="${type}"
-      :disabled="disabled"
-      :circle="circle"
-      :loading="loading"
-      :icon="icon.includes('ods-icon') ? icon : ''"
-      :size="size"
-      :full="full"
-      :negative="negative">
-      {{ text }}
-    </ods-button>
-  </storybook-template>
+    {{ text }}
+  </ods-button>
+</storybook-template>
   `
 
   stories.add(
@@ -68,8 +64,7 @@ types.forEach(type => {
           default: boolean('Loading', false)
         },
         icon: {
-          
-          default: optionsKnob('Icon', icons, '', multiOption) // select('Icon', icons, '')
+          default: optionsKnob('Icon', icons, '', { display: 'select' })
         },
         circle: {
           default: boolean('Circle', false)

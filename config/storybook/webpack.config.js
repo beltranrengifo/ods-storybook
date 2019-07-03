@@ -1,3 +1,5 @@
+const DisableWarnings = require('./disable-warnings.js')
+
 module.exports = async ({ config, mode }) => {
   config.module.rules.push(
     {
@@ -23,5 +25,7 @@ module.exports = async ({ config, mode }) => {
       enforce: 'pre'
     }
   )
+  config.plugins.push(new DisableWarnings())
+
   return config
 }

@@ -1,16 +1,12 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean, select, optionsKnob } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import accordionMd from '../md/accordion.md'
 import OdsAccordion from '@onesait/onesait-ds/lib/accordion'
-import StorybookTemplate from '../utils/StorybookTemplate'
+import StorybookTemplate from '../components/StorybookTemplate'
 
 const stories = storiesOf('ODS/Accordion', module)
 
-/* const types = [
-  'default',
-  'accordion'
-] */
 const templateDefault = `
 <storybook-template>
   <ods-accordion
