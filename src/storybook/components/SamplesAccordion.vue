@@ -77,7 +77,7 @@ export default {
           props += i < l ? ',\n  ' : '\n'
         }
       }
-      this.html = storyRoot.template
+      this.html = storyRoot.template ? `<!-- template --> \n${storyRoot.template}` : ''
       this.js += data ? `// data\n{\n  ${data}\n}` : ''
       this.js += data ? `\n` : ''
       this.js += props ? `// props\n{\n  ${props}}` : ''

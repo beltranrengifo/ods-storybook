@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean, select, optionsKnob, files } from '@storybook/addon-knobs'
+import { text, select, optionsKnob, files } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import actionsMenuMd from '../md/actions-menu.md'
