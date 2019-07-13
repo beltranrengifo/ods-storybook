@@ -1,6 +1,9 @@
 <template>
-  <ods-accordion>
-    <ods-accordion-item title="Sample code (initial state)">
+  <ods-accordion
+    v-model="activeItem">
+    <ods-accordion-item
+      title="Sample code"
+      name="sample-code">
       <div class="ods-storybook__code-samples">
         <pre
           v-for="sample in samples"
@@ -34,11 +37,18 @@
 </template>
 
 <script>
+import { constants } from 'crypto';
 export default {
   name: 'SamplesAccordion',
 
   props: {
     root: {
+      type: Object
+    },
+    sampleProps: {
+      type: Object
+    },
+    sampleData: {
       type: Object
     }
   },
@@ -47,7 +57,8 @@ export default {
     return {
       samples: ['html', 'js'],
       html: '',
-      js: ''
+      js: '',
+      activeItem: ['sample-code']
     }
   },
 
@@ -65,6 +76,8 @@ export default {
 
     getSampleStrings () {
       const storyRoot = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions
+      const template = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template
+      /* const storyRoot = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions
       let dataFunction = storyRoot.data
       let data = dataFunction && dataFunction.toString().replace('function', '').replace(';', '').trim()
       let props = ''
@@ -77,14 +90,47 @@ export default {
           props += i < l ? ',\n  ' : '\n'
         }
       }
-      this.html = storyRoot.template ? `<!-- template --> \n${storyRoot.template}` : ''
+      this.html = storyRoot.template ? `<!-- template --> ${storyRoot.template}` : ''
       this.js += data ? `// data\n{\n  ${data}\n}` : ''
       this.js += data ? `\n` : ''
+      this.js += props ? `// props\n{\n  ${props}}` : '' */
+      const getSamples = obj => {
+        if (obj && Object.keys(obj).length) {
+          let l = Object.keys(obj).length
+          let str = ''
+          let i = 0
+          for (let key in obj) {
+            str += `${key}: ${JSON.stringify(obj[key])}`
+            i++
+            str += i < l ? ',\n  ' : '\n'
+          }
+          return str
+        }
+      }
+      let data = getSamples(this.sampleData)
+      let props = getSamples(this.sampleProps)
+      /* if (this.sampleData && Object.keys(this.sampleData).length) {
+        let i = 0
+        let l = Object.keys(this.sampleData).length
+        for (let key in this.sampleData) {
+          data += `${key}: ${JSON.stringify(this.sampleData[key])}`
+          i++
+          data += i < l ? ',\n  ' : '\n'
+        }
+      }
+      if (this.sampleProps && Object.keys(this.sampleProps).length) {
+        let i = 0
+        let l = Object.keys(this.sampleProps).length
+        for (let key in this.sampleProps) {
+          props += `${key}: ${JSON.stringify(this.sampleProps[key])}`
+          i++
+          props += i < l ? ',\n  ' : '\n'
+        }
+      } */
+      this.html = template ? `<!-- template --> ${template}` : ''
+      this.js += data ? `// data\n{\n  ${data}}` : ''
+      this.js += data ? `\n` : ''
       this.js += props ? `// props\n{\n  ${props}}` : ''
-    },
-
-    getPropStrValue (val) {
-      return typeof val === 'string' ? `'${val}'` : val
     },
 
     printSample (sample) {
@@ -96,6 +142,12 @@ export default {
     this.$nextTick(() => {
       this.getSampleStrings()
     })
+  },
+
+  watch: {
+    'sampleProps' (val) {
+      this.getSampleStrings()
+    }
   }
 }
 </script>
@@ -114,7 +166,7 @@ export default {
       }
       pre {
         width: 50%;
-        height: 440px;
+        display: inherit;
         margin: 0;
         overflow: hidden;
         position: relative;
@@ -125,7 +177,7 @@ export default {
     }
     &__copy-button {
       position: absolute;
-      top: 24px;
+      top: 4px;
       right: 8px;
     }
     &__clippy {
@@ -148,7 +200,7 @@ export default {
     font-size: 16px;
     margin: 0 4px;
     padding: 8px 16px;
-    height: 400px;
+    width: 100%;
   }
 </style>
 

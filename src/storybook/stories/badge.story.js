@@ -2,9 +2,6 @@ import { storiesOf } from '@storybook/vue'
 import { boolean, text, select, number } from '@storybook/addon-knobs'
 import { capitalize } from '../utils/functions'
 import badgeMd from '../md/badge.md'
-import OdsBadge from '@onesait/onesait-ds/lib/badge'
-import StorybookTemplate from '../components/StorybookTemplate'
-
 const stories = storiesOf('ODS/Badge', module)
 
 const types = [
@@ -29,10 +26,6 @@ types.forEach(type => {
   stories.add(
     capitalize(type),
     () => ({
-      components: {
-        'ods-badge': OdsBadge,
-        'storybook-template': StorybookTemplate
-      },
       template: templateDefault,
       methods: {
       },
@@ -71,10 +64,6 @@ const templateWithElement = `
 stories.add(
   'With element',
   () => ({
-    components: {
-      'ods-badge': OdsBadge,
-      'storybook-template': StorybookTemplate
-    },
     template: templateWithElement,
     methods: {
     },

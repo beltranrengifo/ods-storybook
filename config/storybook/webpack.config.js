@@ -8,7 +8,9 @@ module.exports = async ({ config, mode }) => {
         { loader: 'html-loader' },
         {
           loader: 'markdown-loader',
-          options: {}
+          options: {
+            smartypants: true
+          }
         }
       ]
     },

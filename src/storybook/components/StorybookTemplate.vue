@@ -1,11 +1,19 @@
 <template>
-  <div class="ods-storybook__basic-template">
+  <div
+    class="ods-storybook__basic-template">
     <ods-module
       class="ods-storybook__container ods-storybook__component"
-      :class="{'is-negative': negative}">
+      :class="{
+        'is-negative': negative,
+        'justify-center': center
+      }">
       <slot/>
     </ods-module>
-    <samples-accordion :root="root"/>
+    <samples-accordion
+      :key="samplesAccordionKey"
+      :root="root"
+      :sampleProps="sampleProps"
+      :sampleData="sampleData"/>
   </div>
 </template>
 
@@ -23,16 +31,33 @@ export default {
     negative: {
       type: Boolean,
       default: false
+    },
+    center: {
+      type: Boolean,
+      default: false
     }
   },
 
   data () {
     return {
-      root: null
+      root: null,
+      samplesAccordionKey: 0,
+      sampleProps: null,
+      sampleData: null
+    }
+  },
+
+  methods: {
+    refreshSamples () {
+      this.samplesAccordionKey++
     }
   },
 
   mounted () {
+    this.$nextTick(() => {
+      this.sampleProps = this.demoData.props
+      this.sampleData = this.demoData.data
+    })
     this.root = this.$slots.default[0].componentInstance.$root
   }
 }
@@ -61,7 +86,11 @@ export default {
       margin-bottom: 48px;
       border: 1px solid  $--color-neutral-5;
     }
-    
+  }
+
+  .justify-center {
+    display: flex;
+    justify-content: center;
   }
   h6 {
     margin: 0;

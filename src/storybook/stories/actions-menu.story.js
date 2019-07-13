@@ -3,8 +3,6 @@ import { text, select, optionsKnob, files } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import actionsMenuMd from '../md/actions-menu.md'
-import OdsActionsMenu from '@onesait/onesait-ds/lib/actions-menu'
-import StorybookTemplate from '../components/StorybookTemplate'
 import getIcons from '../utils/icons'
 const icons = getIcons()
 
@@ -33,8 +31,9 @@ const positions = [
 
 types.forEach(type => {
   const templateDefault = `
-<storybook-template>
+<storybook-template center>
   <ods-actions-menu
+    :key="componentKey"
     :customClass="customClass"
     :${type}=${type}
     :width="width"
@@ -58,27 +57,28 @@ types.forEach(type => {
   stories.add(
     capitalize(type),
     () => ({
-      components: {
-        'ods-actions-menu': OdsActionsMenu,
-        'storybook-template': StorybookTemplate
-      },
       template: templateDefault,
       methods: {
         handleShow: action('show'),
         handleHide: action('hide')
+      },
+      data () {
+        return {
+          watchers: ['popoverPosition', 'mobilePopoverPosition']
+        }
       },
       props: {
         customClass: {
           default: text('Css class', 'my-class', 'Common')
         },
         icon: {
-          default: optionsKnob('Icon - only works with icon type', icons, 'home', { display: 'select' }, 'Types')
+          default: optionsKnob('Icon - only with icon type', icons, 'home', { display: 'select' }, 'Types')
         },
         text: {
-          default: text('Text - only works with text type', 'John Doe', 'Types')
+          default: text('Text - only with text type', 'John Doe', 'Types')
         },
         img: {
-          default: files('Image - only works with img type', 'png, jpg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/245px-Unofficial_JavaScript_logo_2.svg.png', 'Types')
+          default: files('Image - only with img type', 'png, jpg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/245px-Unofficial_JavaScript_logo_2.svg.png', 'Types')
         },
         width: {
           default: text('Width', '', 'Common')
@@ -87,10 +87,10 @@ types.forEach(type => {
           default: text('Mobile width', '', 'Common')
         },
         popoverPosition: {
-          default: select('Postion (change before click or switch stories)', positions, 'bottom-start', 'Common')
+          default: select('Postion', positions, 'bottom-start', 'Common')
         },
         mobilePopoverPosition: {
-          default: select('Mobile postion (change before click or switch stories)', positions, 'bottom-start', 'Common')
+          default: select('Mobile postion', positions, 'bottom-start', 'Common')
         },
         boundariesElement: {
           default: text('Boundaries', '#root', 'Common')

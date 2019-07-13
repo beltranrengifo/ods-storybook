@@ -9,6 +9,8 @@ import '@/assets/scss/storybook.scss'
 import Vue from 'vue'
 import VueHighlightJS from 'vue-highlightjs'
 import ODS from '@onesait/onesait-ds'
+import StorybookTemplate from '../../src/storybook/components/StorybookTemplate'
+import RefreshSamplesMixin from '../../src/storybook/components/RefreshSamplesMixin'
 const req = require.context('../../src/storybook/stories', true, /.story.js$/)
 const loadStories = () => req.keys().forEach(filename => req(filename))
 
@@ -52,3 +54,5 @@ addParameters({
 configure(loadStories, module)
 Vue.use(VueHighlightJS)
 Vue.use(ODS)
+Vue.component('StorybookTemplate', StorybookTemplate)
+Vue.mixin(RefreshSamplesMixin)

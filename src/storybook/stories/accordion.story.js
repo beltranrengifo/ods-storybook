@@ -2,9 +2,6 @@ import { storiesOf } from '@storybook/vue'
 import { boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import accordionMd from '../md/accordion.md'
-import OdsAccordion from '@onesait/onesait-ds/lib/accordion'
-import StorybookTemplate from '../components/StorybookTemplate'
-
 const stories = storiesOf('ODS/Accordion', module)
 
 const templateDefault = `
@@ -31,10 +28,6 @@ const templateDefault = `
 stories.add(
   'Default',
   () => ({
-    components: {
-      'ods-accordion': OdsAccordion,
-      'storybook-template': StorybookTemplate
-    },
     template: templateDefault,
     data () {
       return {
@@ -87,10 +80,6 @@ const templateCustomTitle = `
 stories.add(
   'Custom Title',
   () => ({
-    components: {
-      'ods-accordion': OdsAccordion,
-      'storybook-template': StorybookTemplate
-    },
     template: templateCustomTitle,
     data () {
       return {

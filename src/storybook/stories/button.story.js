@@ -1,13 +1,10 @@
 import { storiesOf } from '@storybook/vue'
 import { text, boolean, select, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import OdsButton from '@onesait/onesait-ds/lib/button'
 import { capitalize } from '../utils/functions'
 import buttonMd from '../md/button.md'
-import StorybookTemplate from '../components/StorybookTemplate'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
-
 const stories = storiesOf('ODS/Button', module)
 
 const types = [
@@ -42,10 +39,6 @@ types.forEach(type => {
   stories.add(
     capitalize(type),
     () => ({
-      components: {
-        'ods-button': OdsButton,
-        'storybook-template': StorybookTemplate
-      },
       template: template,
       methods: {
         handleClick: action('clicked')

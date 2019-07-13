@@ -1,8 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { text, withKnobs, optionsKnob } from '@storybook/addon-knobs'
 import breadcrumbsMd from '../md/breadcrumbs.md'
-import OdsBreadcrumbs from '@onesait/onesait-ds/lib/breadcrumb'
-import StorybookTemplate from '../components/StorybookTemplate'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
 const stories = storiesOf('ODS/Breadcrumbs', module)
@@ -24,10 +22,6 @@ const templateDefault = `
 stories.add(
   'Default',
   () => ({
-    components: {
-      'ods-breadcrumbs': OdsBreadcrumbs,
-      'storybook-template': StorybookTemplate
-    },
     template: templateDefault,
     props: {
       separator: {

@@ -3,9 +3,6 @@ import { boolean, text } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import alarmMd from '../md/alert.md'
-import OdsAlert from '@onesait/onesait-ds/lib/alert'
-import StorybookTemplate from '../components/StorybookTemplate'
-
 const stories = storiesOf('ODS/Alert', module)
 
 const types = [
@@ -33,10 +30,6 @@ types.forEach(type => {
   stories.add(
     capitalize(type),
     () => ({
-      components: {
-        'ods-alert': OdsAlert,
-        'storybook-template': StorybookTemplate
-      },
       template: templateDefault,
       methods: {
         handleClose: action('closed')
