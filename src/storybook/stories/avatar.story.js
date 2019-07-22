@@ -4,12 +4,12 @@ import avatarMd from '../md/avatar.md'
 const stories = storiesOf('ODS/Avatar', module)
 
 const templateDefault = `
-  <storybook-template>
-    <ods-avatar
-      :size="size">
-      <img src="images/avatar.svg" alt="user avatar">
-    </ods-avatar>
-  </storybook-template>
+<storybook-template>
+  <ods-avatar
+    :size="size">
+    <img src="images/avatar.svg" alt="user avatar">
+  </ods-avatar>
+</storybook-template>
   `
 stories.add(
   'Avatar',

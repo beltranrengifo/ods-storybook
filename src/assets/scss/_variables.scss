@@ -6,6 +6,7 @@ $--color-neutral-2: #A2ACB3 !default;
 $--color-neutral-3: #D5DCE0 !default;
 $--color-neutral-4: #F9F9FB !default;
 $--color-neutral-5: #f0f0f0 !default;
+$--color-neutral-6: #fcfcfc !default;
 
 $--color-primary: #2E6C99 !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 20%) !default; // #5889ad
@@ -17,6 +18,10 @@ $--color-primary-light-6: mix($--color-white, $--color-primary, 70%) !default; /
 $--color-primary-light-7: mix($--color-white, $--color-primary, 87%) !default; // #e3ebf1
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; // #d5e1ea
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; // #eaf0f5
+
+// highlight JS
+$--color-hljs-background: $--color-neutral-6;
+$--color-hljs-comment: rgba(62, 65, 67, 0.35);
 
 $--color-secondary: #87BEE6 !default;
 
@@ -69,6 +74,8 @@ $--bp-mobile-md: 575px !default;
 $--bp-mobile-lg: 767px !default;
 $--bp-tablet-portrait: 1023px !default;
 $--bp-desktop-sm-height: 700px !default;
+
+$--main-font: 'Soho', Helvetica, Arial, sans-serif!important;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;

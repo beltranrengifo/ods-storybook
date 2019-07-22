@@ -48,6 +48,9 @@ addParameters({
   },
   viewport: {
     viewports: viewports
+  },
+  a11y: {
+    element: '.ods-storybook__component .ods-module__body'
   }
 })
 

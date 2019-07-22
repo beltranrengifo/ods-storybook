@@ -1,5 +1,8 @@
+@import './variables';
+@import './hljs';
+
 html, body {
-  font-family: 'Soho', Helvetica, Arial, sans-serif!important;
+  font-family: $--main-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-kerning: none;

@@ -11,7 +11,7 @@
     </ods-module>
     <samples-accordion
       :key="samplesAccordionKey"
-      :root="root"
+      :sampleTemplate="sampleTemplate"
       :sampleProps="sampleProps"
       :sampleData="sampleData"/>
   </div>
@@ -40,7 +40,7 @@ export default {
 
   data () {
     return {
-      root: null,
+      sampleTemplate: '',
       samplesAccordionKey: 0,
       sampleProps: null,
       sampleData: null
@@ -58,7 +58,7 @@ export default {
       this.sampleProps = this.demoData.props
       this.sampleData = this.demoData.data
     })
-    this.root = this.$slots.default[0].componentInstance.$root
+    this.sampleTemplate = this.$slots.default[0].componentInstance.$root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template.replace(/\s*:key="componentKey"\s*/g, '')
   }
 }
 </script>
@@ -74,11 +74,16 @@ export default {
       }
     }
     &__component {
+      min-height: 160px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
       &.is-negative {
         background: $--color-onesait-logo;
       }
       & > /deep/ .ods-module__body {
         padding: 0;
+        width: 100%;
       }
     }
     &__container {
@@ -91,6 +96,9 @@ export default {
   .justify-center {
     display: flex;
     justify-content: center;
+    /deep/ .ods-module__body {
+      width: auto;
+    }
   }
   h6 {
     margin: 0;

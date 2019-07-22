@@ -18,9 +18,7 @@ export default {
       this.$children[0] && 
       this.$children[0].refreshSamples ) {
         [this.$data, this.$props].forEach( obj => {
-          Object.keys(obj).forEach(e => this.$watch(e, () => {
-            this.$children[0].refreshSamples()
-          }))
+          Object.keys(obj).forEach(e => this.$watch(e, () => this.$children[0].refreshSamples()))
         })
         this.$children[0].demoData = {}
         this.$children[0].demoData.props = this.$props

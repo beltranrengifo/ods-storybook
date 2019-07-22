@@ -37,7 +37,7 @@ types.forEach(type => {
           default: boolean('Dot', false)
         },
         isLine: {
-          default: boolean('Line (only primary)', false)
+          default: type === 'primary' ? boolean('Line', false) : null
         }
       }
     }),

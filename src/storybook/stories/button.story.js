@@ -10,11 +10,7 @@ const stories = storiesOf('ODS/Button', module)
 const types = [
   'primary',
   'secondary',
-  'text',
-  'success',
-  'info',
-  'warning',
-  'danger'
+  'text'
 ]
 
 types.forEach(type => {
@@ -27,7 +23,7 @@ types.forEach(type => {
     :disabled="disabled"
     :circle="circle"
     :loading="loading"
-    :icon="icon.includes('ods-icon') ? icon : ''"
+    :icon="icon"
     :size="size"
     :full="full"
     :negative="negative">

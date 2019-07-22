@@ -14,7 +14,6 @@
             content="Copy"
             placement="top-start">
             <ods-button
-              negative
               size="small"
               @click="sampleToClipboard(sample, printSample(sample))"
               class="ods-storybook__copy-button"
@@ -42,8 +41,8 @@ export default {
   name: 'SamplesAccordion',
 
   props: {
-    root: {
-      type: Object
+    sampleTemplate: {
+      type: String
     },
     sampleProps: {
       type: Object
@@ -75,59 +74,25 @@ export default {
     },
 
     getSampleStrings () {
-      const storyRoot = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions
-      const template = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template
-      /* const storyRoot = this.root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions
-      let dataFunction = storyRoot.data
-      let data = dataFunction && dataFunction.toString().replace('function', '').replace(';', '').trim()
-      let props = ''
-      if (this.root.STORYBOOK_VALUES) {
-        let i = 0
-        let l = Object.keys(this.root.STORYBOOK_VALUES).length
-        for (let key in this.root.STORYBOOK_VALUES) {
-          props += `${key}: ${this.getPropStrValue(this.root.STORYBOOK_VALUES[key])}`
-          i++
-          props += i < l ? ',\n  ' : '\n'
-        }
-      }
-      this.html = storyRoot.template ? `<!-- template --> ${storyRoot.template}` : ''
-      this.js += data ? `// data\n{\n  ${data}\n}` : ''
-      this.js += data ? `\n` : ''
-      this.js += props ? `// props\n{\n  ${props}}` : '' */
-      const getSamples = obj => {
+      const getComponentProperties = obj => {
         if (obj && Object.keys(obj).length) {
-          let l = Object.keys(obj).length
+          obj.hasOwnProperty('componentKey') && delete obj.componentKey
+          obj.hasOwnProperty('watchers') && delete obj.watchers
           let str = ''
           let i = 0
           for (let key in obj) {
-            str += `${key}: ${JSON.stringify(obj[key])}`
+            str += `${key}: ${JSON.stringify(obj[key])}`.replace(/"/g, "'")
             i++
-            str += i < l ? ',\n  ' : '\n'
+            str += i < Object.keys(obj).length ? ',\n  ' : '\n'
           }
           return str
         }
       }
-      let data = getSamples(this.sampleData)
-      let props = getSamples(this.sampleProps)
-      /* if (this.sampleData && Object.keys(this.sampleData).length) {
-        let i = 0
-        let l = Object.keys(this.sampleData).length
-        for (let key in this.sampleData) {
-          data += `${key}: ${JSON.stringify(this.sampleData[key])}`
-          i++
-          data += i < l ? ',\n  ' : '\n'
-        }
-      }
-      if (this.sampleProps && Object.keys(this.sampleProps).length) {
-        let i = 0
-        let l = Object.keys(this.sampleProps).length
-        for (let key in this.sampleProps) {
-          props += `${key}: ${JSON.stringify(this.sampleProps[key])}`
-          i++
-          props += i < l ? ',\n  ' : '\n'
-        }
-      } */
-      this.html = template ? `<!-- template --> ${template}` : ''
+
+      let data = getComponentProperties(this.sampleData)
+      let props = getComponentProperties(this.sampleProps)
+
+      this.html = this.sampleTemplate ? `<!-- template --> ${this.sampleTemplate}` : ''
       this.js += data ? `// data\n{\n  ${data}}` : ''
       this.js += data ? `\n` : ''
       this.js += props ? `// props\n{\n  ${props}}` : ''
@@ -155,6 +120,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/_variables.scss';
 @import '~highlight.js/styles/atom-one-dark.css';
+@import '~highlight.js/styles/mono-blue.css';
 
   .ods-storybook {
     &__code-samples {
@@ -196,11 +162,31 @@ export default {
       font-family: 'Soho', Helvetica, Arial, sans-serif!important;
     }
   }
-  .hljs {
-    font-size: 16px;
+  /deep/ .hljs {
+    font-size: 14px;
     margin: 0 4px;
     padding: 8px 16px;
     width: 100%;
+    box-sizing: border-box;
+    background: $--color-hljs-background;
+    border: 1px solid $--color-primary-light-9;
+    &-comment {
+      color: $--color-hljs-comment;
+    }
+    .hljs-string,
+    .hljs-title,
+    .hljs-section,
+    .hljs-built_in,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-addition,
+    .hljs-tag,
+    .hljs-quote,
+    .hljs-name,
+    .hljs-selector-id,
+    .hljs-selector-class {
+      color: $--color-primary;
+    }
   }
 </style>
 

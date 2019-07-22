@@ -14,18 +14,18 @@ const types = [
 
 types.forEach(type => {
   const templateDefault = `
-  <storybook-template>
-    <ods-alert
-      :title="title || '${capitalize(type)} alert'"
-      type="${type}" 
-      :width="width"
-      :closable="closable"
-      :closeText="closeText"
-      :showIcon="showIcon"
-      :description="description"
-      @close="handleClose">
-    </ods-alert>
-  </storybook-template>
+<storybook-template>
+  <ods-alert
+    :title="title || '${capitalize(type)} alert'"
+    type="${type}" 
+    :width="width"
+    :closable="closable"
+    :closeText="closeText"
+    :showIcon="showIcon"
+    :description="description"
+    @close="handleClose">
+  </ods-alert>
+</storybook-template>
   `
   stories.add(
     capitalize(type),
