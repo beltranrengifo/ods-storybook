@@ -90,6 +90,7 @@ export default {
       padding: 32px;
       margin-bottom: 48px;
       border: 1px solid  $--color-neutral-5;
+      overflow: visible;
     }
   }
 

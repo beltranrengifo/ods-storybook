@@ -74,14 +74,16 @@ export default {
     },
 
     getSampleStrings () {
+      const formatJson = (key, val) => typeof val === 'function' ? val.toString() : val
+
       const getComponentProperties = obj => {
         if (obj && Object.keys(obj).length) {
           obj.hasOwnProperty('componentKey') && delete obj.componentKey
-          obj.hasOwnProperty('watchers') && delete obj.watchers
+          obj.hasOwnProperty('reRenderWatchers') && delete obj.reRenderWatchers
           let str = ''
           let i = 0
           for (let key in obj) {
-            str += `${key}: ${JSON.stringify(obj[key])}`.replace(/"/g, "'")
+            str += `${key}: ${JSON.stringify(obj[key],  formatJson, 2)}`.replace(/"/g, "'")
             i++
             str += i < Object.keys(obj).length ? ',\n  ' : '\n'
           }

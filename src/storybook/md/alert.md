@@ -1,8 +1,8 @@
-## Alert
+# Alert
 
 Mostrar mensajes de alertas importantes.
 
-###  Uso básico
+## Uso básico
 
 Los componentes de alertas no son elementos overlay de la página y no desaparecen automáticamente.
 
@@ -12,7 +12,7 @@ Alert provee 4 tipos de temas definidos por `type`, el valor por defecto es `inf
 ```
 <ods-alert
   title="Success alert"
-  type="success" 
+  type="success"
   width="400">
 </ods-alert>
 <ods-alert
@@ -33,7 +33,7 @@ Alert provee 4 tipos de temas definidos por `type`, el valor por defecto es `inf
 ```
 
 
-###  Personalización del botón de cerrar 
+## Personalización del botón de cerrar
 
 Personalizar el botón de cerrar como texto u otros símbolos.
 
@@ -67,7 +67,7 @@ Alert permite configurar si es posible cerrarlo. El texto del botón de cerrado,
 ```
 
 
-###   Usar iconos
+##  Usar iconos
 
 Mostrar un icono mejora la legibilidad.
 
@@ -97,7 +97,7 @@ Setear el atributo `show-icon` muestra un icono que corresponde al tipo de Alert
   </ods-alert>
 ```
 
-###   Con descripción
+##  Con descripción
 
 Descripción incluye un mensaje con información más detallada.
 
@@ -110,7 +110,7 @@ Además del atributo requerido `title`, se puede agregar el atributo `descriptio
     description="Además del atributo requerido title, se puede agregar el atributo description para ayudar a describir la alerta con mas detalles. La descripción puede contener solamente un string y va a usar word wrap automáticamente.">
   </ods-alert>
 ```
-###  Atributos
+## Atributos
 | Atributo    | Descripción                              | Tipo    | Valores aceptados          | Por defecto |
 | ----------- | ---------------------------------------- | ------- | -------------------------- | ----------- |
 | title       | título. Requerido                        | string  | —                          | —           |
@@ -123,21 +123,21 @@ Además del atributo requerido `title`, se puede agregar el atributo `descriptio
 | width       | ancho del elemento (en píxeles)          | number | -                          | 100%       |
 
 
-###  Eventos
+## Eventos
 | Nombre del evento | Descripción                           | Parámetros |
 | ----------------- | ------------------------------------- | ---------- |
 | close             | Se dispara cuando la alerta se cierra | —          |
 
 
-### Changelog
+##Changelog
 
-#### Version 0.0.2 (19/06/18)
+## Version 0.0.2 (19/06/18)
 
 Añadido parámetro width para elegir ancho del componente
 Mejoras CSS: Cambiado padding, sombreado y posicionamiento de los iconos
 
 
 
-#### Version 0.0.1 (11/06/18)
+## Version 0.0.1 (11/06/18)
 
 Primera versión en pruebas

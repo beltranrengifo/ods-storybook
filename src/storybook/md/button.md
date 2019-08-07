@@ -1,19 +1,18 @@
-## Ods Button
+# Ods Button
 
-
-###  Uso básico
+## Uso básico
 
 ```
 <ods-button>Brand Button</ods-button>
 ```
 
-###  Botón secundario
+## Botón secundario
 
 ```
 <ods-button type="secondary">Secundary Button</ods-button>
 ```
 
-###  Botón deshabilitado
+## Botón deshabilitado
 
 El atributo `disabled` determina su un botón esta deshabilitado.
 
@@ -22,7 +21,7 @@ El atributo `disabled` determina su un botón esta deshabilitado.
 <ods-button type="secondary" disabled>Secundary Button Disabled</ods-button>
 ```
 
-###  Botón `type text`
+## Botón `type text`
 
 Botones sin borde ni fondo.
 
@@ -31,9 +30,9 @@ Botones sin borde ni fondo.
 <ods-button type="text">Link Button</ods-button>
 <ods-button type="text" disabled>Link Button</ods-button>
 ```
- 
 
-###  Botón icono
+
+## Botón icono
 
 Use el atributo `icon` para agregar un icono. Puede encontrar el listado de iconos en el componente de iconos. Agregar iconos a la derecha del texto se puede conseguir con un tag `<i>`. También se pueden usar iconos custom.
 
@@ -43,7 +42,7 @@ Use el atributo `icon` para agregar un icono. Puede encontrar el listado de icon
 <ods-button icon="ods-icon-arrow-right" circle disabled></ods-button>
 ```
 
-###  En negativo
+## En negativo
 
 Use el atributo `negative` para negativizar los botones.
 
@@ -56,7 +55,7 @@ Use el atributo `negative` para negativizar los botones.
 <ods-button type="text" disabled negative>Link Button</ods-button>
 ```
 
-### Botones en estado de loading
+##Botones en estado de loading
 
 El atributo `loading` permite poner el botón en estado de loading asignándole un Boolean
 
@@ -65,7 +64,7 @@ El atributo `loading` permite poner el botón en estado de loading asignándole 
 ```
 
 
-###  Tamaños
+## Tamaños
 
 Además del tamaño por defecto, el componente Button provee tres tamaños adicionales para utilizar en diferentes escenarios.
 
@@ -77,16 +76,16 @@ Además del tamaño por defecto, el componente Button provee tres tamaños adici
 <ods-button size="small">Small</ods-button>
 ```
 
-### Botones a full width
+##Botones a full width
 
 Botones a ancho completo del contenedor, usando el atributo `full`
 
 ```
 <ods-button full>Full Width Button</ods-button>
 ```
- 
 
-###  Atributos
+
+## Atributos
 | Atributo    | Descripción                                   | Tipo    | Valores aceptados                                  | Por defecto |
 | ----------- | --------------------------------------------- | ------- | -------------------------------------------------- | ----------- |
 | size        | tamaño del botón                              | string  | medium / small                               | —           |

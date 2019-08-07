@@ -8,14 +8,16 @@ export default {
 
   methods: {
     refreshKey () {
-      this.componentKey++
+      this.$nextTick(_ => {
+        this.componentKey++
+      })
     }
   },
 
   mounted () {
     if (
-      this.$props && 
-      this.$children[0] && 
+      this.$props &&
+      this.$children[0] &&
       this.$children[0].refreshSamples ) {
         [this.$data, this.$props].forEach( obj => {
           Object.keys(obj).forEach(e => this.$watch(e, () => this.$children[0].refreshSamples()))
@@ -24,8 +26,8 @@ export default {
         this.$children[0].demoData.props = this.$props
         this.$children[0].demoData.data = this.$data
     }
-    if (this.watchers) {
-      this.watchers.forEach(w => this.$watch(w, () => this.refreshKey()))
+    if (this.reRenderWatchers) {
+      this.reRenderWatchers.forEach(w => this.$watch(w, this.refreshKey))
     }
   }
 }

@@ -1,8 +1,8 @@
-## Breadcrumb
+# Breadcrumb
 
 Muestra la localización de la página actual, haciendo más fácil el poder ir a la página anterior.
 
-###  Uso básico
+## Uso básico
 
 
  En `ods-breadcrumb`, cada `ods-breadcrumb-item` es un tag que representa cada nivel empezando desde la homepage. Este componente tiene un atributo `String` llamado `separator`, el mismo determina el caracter separador. El valor por defecto es '>'.
@@ -15,9 +15,9 @@ Muestra la localización de la página actual, haciendo más fácil el poder ir 
   <ods-breadcrumb-item>promotion detail</ods-breadcrumb-item>
 </ods-breadcrumb>
 ```
- 
 
-###  Icono separador
+
+## Icono separador
 
  Utilice `separator-class` para que use la tipografía `icon` como separador.
 
@@ -30,18 +30,18 @@ Muestra la localización de la página actual, haciendo más fácil el poder ir 
 </ods-breadcrumb>
 ```
 
-###  Programado con vue-router
+## Programado con vue-router
 
 Para configurar las bradcrumbs con el route de Vue, revisa la [documentación de front](https://www.onesaitplatform.online/web/onesait-docs/code-guide/onesait/main-header.html#_2-breadcrumbs)
 
 
-###  Breadcrumb atributos
+## Breadcrumb atributos
 | Atributo        | Descripción                            | Tipo   | Valores aceptados | Por defecto |
 | --------------- | -------------------------------------- | ------ | ----------------- | ----------- |
 | separator       | caracter separador                     | string | —                 | /           |
 | separator-class | nombre de la clase del icono separador | string | —                 | -           |
 
-###  Breadcrumb Item atributos
+## Breadcrumb Item atributos
 | Atributo | Descripción                              | Tipo          | Valores aceptados | Por defecto |
 | -------- | ---------------------------------------- | ------------- | ----------------- | ----------- |
 | to       | ruta del link, lo mismo que `to` de `vue-router` | string/object | —                 | —           |

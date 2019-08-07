@@ -1,12 +1,12 @@
-## Accordion
+# Accordion
 
 Use Accordion para almacenar contenidos.
 
-###  Uso básico
+## Uso básico
 
 Puede expandir varios paneles
 
- 
+
 ```
 <ods-accordion v-model="activeNames" @change="handleChange">
   <ods-accordion-item title="Consistency" name="1">
@@ -42,9 +42,9 @@ Puede expandir varios paneles
   }
 </script>
 ```
- 
 
-###  Acordeón
+
+## Acordeón
 
 En modo acordeón sólo un panel puede ser expandido a la vez
 
@@ -80,13 +80,13 @@ Activa el modo acordeón usado el atributo `accordion`.
   }
 </script>
 ```
- 
 
-###  Título personalizado
+
+## Título personalizado
 
 Además de usar el atributo `title`, se puede personalizar el título del panel con slots con nombre, esto hace posible agregar contenido personalizado, por ejemplo: iconos.
 
- 
+
 ```
 <ods-accordion accordion>
   <ods-accordion-item name="1">
@@ -111,21 +111,21 @@ Además de usar el atributo `title`, se puede personalizar el título del panel 
   </ods-accordion-item>
 </ods-accordion>
 ```
- 
 
-###  Atributos de Accordion
+
+## Atributos de Accordion
 | Atributo  | Descripción                           | Tipo                                     | Valores aceptados | Por defecto |
 | --------- | ------------------------------------- | ---------------------------------------- | ----------------- | ----------- |
 | accordion | especifica si activa el modo acordeón | boolean                                  | —                 | false       |
 | value     | panel activo                          | string (modo acordeón)/array (No modo acordeón) | —                 | —           |
 
-###  Eventos de Accordion
+## Eventos de Accordion
 | Nombre de Evento | Descripción                              | Parametros                               |
 | ---------------- | ---------------------------------------- | ---------------------------------------- |
 | change           | se dispara cuando los paneles activos cambian | activeNames: array (No modo acordeón)/string (modo acordeón) |
 
 
-###  Atributos de Accordion Item
+## Atributos de Accordion Item
 | Atributo | Descripción                   | Tipo          | Valores aceptados | Por defecto |
 | -------- | ----------------------------- | ------------- | ----------------- | ----------- |
 | name     | identificador único del panel | string/number | —                 | —           |

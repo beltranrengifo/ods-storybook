@@ -1,8 +1,8 @@
-## Avatar
+# Avatar
 
 Indicativo de indentidad mediante imagen.
 
-### Uso básico
+## Uso básico
 
 Muestra una imagen enmarcada en un círculo.
 
@@ -27,7 +27,7 @@ El tamaño está definido por `size` que acepta `small`, `medium`, `large` o `xl
 ```
 
 
-### Atributos
+## Atributos
 | Atributo | Descripción                              | Tipo           | Valores aceptados | Por defecto |
 | -------- | ---------------------------------------- | -------------- | ----------------- | ----------- |
 | size     | tamaño del avatar                        | string         | small / medium / large / xlarge | small           |

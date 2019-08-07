@@ -1,8 +1,8 @@
-## Cascader
+# Cascader
 
 Si las opciones tienen una estructura jerárquica clara, Cascader puede utilizarse para visualizarlas y seleccionarlas.
 
-###  Uso básico
+## Uso básico
 
 Existen dos maneras de expandir los elementos hijo de la opción.
 
@@ -32,7 +32,7 @@ La prop `showCascaderLabel` permite controla si el label debe estar visible ono,
 
 
 <script>
-{  
+{
   data() {
     return {
       options: [{
@@ -242,9 +242,9 @@ La prop `showCascaderLabel` permite controla si el label debe estar visible ono,
 }
 </script>
 ```
- 
 
-###  Opcion Disabled
+
+## Opcion Disabled
 
 Para desactivar una opción configure un campo `disabled` en el objeto de opción.
 
@@ -461,9 +461,9 @@ Para desactivar una opción configure un campo `disabled` en el objeto de opció
   }
 </script>
 ```
- 
 
-###  Mostrar sólo el último nivel
+
+## Mostrar sólo el último nivel
 
 Puede mostrar sólo el último nivel en lugar de todos los niveles.
 
@@ -680,9 +680,9 @@ Puede mostrar sólo el último nivel en lugar de todos los niveles.
   }
 </script>
 ```
- 
 
-###  Con valor por defecto
+
+## Con valor por defecto
 
  El valor por defecto se puede definir con un array.
 
@@ -898,9 +898,9 @@ Puede mostrar sólo el último nivel en lugar de todos los niveles.
   }
 </script>
 ```
- 
 
-###  Change on select
+
+## Change on select
 
 También se pueden seleccionar las opciones del elemento padre.
 
@@ -1117,9 +1117,9 @@ También se pueden seleccionar las opciones del elemento padre.
   }
 </script>
 ```
- 
 
-###  Carga dinamica de elementos hijos
+
+## Carga dinamica de elementos hijos
 
 Se puede hacer una carga dinamica de elementos hijos cuando se hace clic en el elemento padre o se pasa el ratón sobre el.
 
@@ -1171,9 +1171,9 @@ Se puede hacer una carga dinamica de elementos hijos cuando se hace clic en el e
   }
 </script>
 ```
- 
 
-###  Filtrable
+
+## Filtrable
 
 Buscar y seleccionar opciones con una palabra clave.
 
@@ -1402,9 +1402,9 @@ Buscar y seleccionar opciones con una palabra clave.
   }
 </script>
 ```
- 
 
-###  Atributos
+
+## Atributos
 | Atributo         | Descripción                              | Tipo            | Opciones              | Por defecto |
 | ---------------- | ---------------------------------------- | --------------- | --------------------- | ----------- |
 | options          | datos de las opciones                    | array           | —                     | —           |
@@ -1425,7 +1425,7 @@ Buscar y seleccionar opciones con una palabra clave.
 
 
 
-###  props
+## props
 | Atributo | Descripción                              | Tipo   | Valores aceptados | Por defecto |
 | -------- | ---------------------------------------- | ------ | ----------------- | ----------- |
 | label    | especifica qué clave del elemento de la opción se utiliza como etiqueta | string | —                 | —           |
@@ -1436,7 +1436,7 @@ Buscar y seleccionar opciones con una palabra clave.
 
 
 
-###  Eventos
+## Eventos
 | Nombre             | Descripción                              | Parametros                |
 | ------------------ | ---------------------------------------- | ------------------------- |
 | change             | se dispara cuando el valor cambia        | valor                     |

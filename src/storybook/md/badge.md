@@ -1,8 +1,8 @@
-## Badge
+# Badge
 
 Marcas en forma de número o estado para botones e iconos.
 
-###   Uso básico
+## Uso básico
 
 Muestra la cantidad de mensajes nuevos.
 
@@ -52,7 +52,7 @@ La cantidad está definida por `value` que acepta `Number` o `String`.
 ```
 
 
-###   Valor máximo
+## Valor máximo
 
 Se puede personalizar el valor máximo.
 
@@ -67,7 +67,7 @@ El valor máximo se define como `max` el cual es un `Number`. Nota: solo funcion
 </ods-badge>
 ```
 
-###   Personalizaciones
+## Personalizaciones
 
 Mostrar texto en vez de números.
 
@@ -83,7 +83,7 @@ Cuando `value` es un `String`, puede mostrar texto personalizado.
 ```
 
 
-###   Pequeño punto
+## Pequeño punto
 
 Puede utilizar un punto para marcar contenido que debe ser notado.
 
@@ -96,30 +96,8 @@ Use el atributo `is-dot`. Es un `Boolean`.
 </ods-badge>
 ```
 
+## Atributos
 
-<style scoped>
-  .share-button {
-    width: 36px;
-    padding: 10px;
-  }
-
-  .mark {
-    margin-top: 8px;
-    line-height: 1;
-    float: right;
-  }
-
-  .clearfix {
-    @utils-clearfix;
-  }
-
-  .item {
-    margin-right: 40px;
-  }
-</style>
-
-
-###  Atributos
 | Atributo | Descripción                              | Tipo           | Valores aceptados | Por defecto |
 | -------- | ---------------------------------------- | -------------- | ----------------- | ----------- |
 | value    | valor a mostrar                          | string, number | —                 | —           |

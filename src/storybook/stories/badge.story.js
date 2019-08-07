@@ -27,8 +27,6 @@ types.forEach(type => {
     capitalize(type),
     () => ({
       template: templateDefault,
-      methods: {
-      },
       props: {
         value: {
           default: text('Value (as String)', '4')
@@ -65,8 +63,6 @@ stories.add(
   'With element',
   () => ({
     template: templateWithElement,
-    methods: {
-    },
     props: {
       type: {
         default: select('Type', types, 'secondary')

@@ -64,7 +64,7 @@ types.forEach(type => {
       },
       data () {
         return {
-          watchers: ['popoverPosition', 'mobilePopoverPosition']
+          reRenderWatchers: ['popoverPosition', 'mobilePopoverPosition']
         }
       },
       props: {

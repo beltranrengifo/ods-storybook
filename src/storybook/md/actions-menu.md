@@ -1,7 +1,7 @@
-## Actions Menu
+# Actions Menu
 
 
-###  Uso básico
+## Uso básico
 
 Este componente está pensado para poder mostrar un menú flotante en cualquier parte de un proyecto. Está creado sobre la base del componente de popover y comparte muchas de las props disponibles. Permite, entre otras cosas, mostrar contenido scrollable con la barra de scroll del sistema.
 
@@ -16,7 +16,7 @@ Es posible añadir una clase CSS personalizada con la prop `customClass`
 Es posible controlar el ancho del popover con la prop `width` y el ancho del popoevr en mobile con la proiedad `mobileWidth`. El breakpoint usado para esta media query es `$--bp-tablet-portrait` (max-width: 1023px)
 Por defecto, la altura máxima que puede alcanzar el menú es de `max-height: calc(100vh - 130px)`, si existe overflow se generará scroll. Es posible modificar este valor atacando directamente a la clase CSS `.ods-actions-menu__scroll-area`. Si el contenido no supera este valor, la altura se adapta automáticamente.
 
-###  Eventos
+## Eventos
 
 Es posible ejecutar métodos propios en el show y en el hide del popover con las props `onShowEvent` y `onHideEvent`.
 
@@ -103,7 +103,7 @@ Es posible contener el popover dentro de un elemento padre para que nmunca se mu
 </ods-actions-menu>
 ```
 
-###  Atributos
+## Atributos
 | Atributo       | Descripción                              | Tipo           | Valores aceptados                        | Por defecto                              |
 | -------------- | ---------------------------------------- | -------------- | ---------------------------------------- | ---------------------------------------- |
 | icon           | Establece el icono a mstrar en el botón  | String         | Todos los iconos del sistema             | -                                        |
@@ -115,8 +115,8 @@ Es posible contener el popover dentro de un elemento padre para que nmunca se mu
 | onShowEvent    | Activa el evento @show                   | Boolean        | -                                        | false                                    |
 | onHideEvent    | Activa el evento @hide                   | Boolean        | -                                        | false                                    |
 
-###  Eventos
+## Eventos
 | Nombre de Evento | Descripción                              | Valores                                  |
 | ---------------- | ---------------------------------------- | ---------------------------------------- |
-| show             | se dispara cuando se muestra             | El nombre del método que se ejecutará    | 
-| hide             | se dispara cuando se oculta              | El nombre del método que se ejecutará    | 
+| show             | se dispara cuando se muestra             | El nombre del método que se ejecutará    |
+| hide             | se dispara cuando se oculta              | El nombre del método que se ejecutará    |
