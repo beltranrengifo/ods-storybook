@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { constants } from 'crypto';
+import cloneDeep from 'lodash/cloneDeep'
 export default {
   name: 'SamplesAccordion',
 
@@ -74,7 +74,8 @@ export default {
     },
 
     getSampleStrings () {
-      const formatJson = (key, val) => typeof val === 'function' ? val.toString() : val
+      const formatJson = (key, val) => typeof val === 'function' ? val.toString().split('\n').map(e => e.trim().replace(/;/g, '')).join(' ') : val
+      const functionToStringReplacer = str => str.replace(/(^')|('$)/g, '')
 
       const getComponentProperties = obj => {
         if (obj && Object.keys(obj).length) {
@@ -83,7 +84,8 @@ export default {
           let str = ''
           let i = 0
           for (let key in obj) {
-            str += `${key}: ${JSON.stringify(obj[key],  formatJson, 2)}`.replace(/"/g, "'")
+            let val = JSON.stringify(obj[key],  formatJson, 2).replace(/"/g, "'").replace(/'function(.*)}'/g, functionToStringReplacer)  // second replace (functionToStringReplacer) for functions (ie. datepicker options)
+            str += `${key}: ${val}`
             i++
             str += i < Object.keys(obj).length ? ',\n  ' : '\n'
           }
@@ -91,8 +93,8 @@ export default {
         }
       }
 
-      let data = getComponentProperties(this.sampleData)
-      let props = getComponentProperties(this.sampleProps)
+      let data = getComponentProperties(cloneDeep(this.sampleData))
+      let props = getComponentProperties(cloneDeep(this.sampleProps))
 
       this.html = this.sampleTemplate ? `<!-- template --> ${this.sampleTemplate}` : ''
       this.js += data ? `// data\n{\n  ${data}}` : ''

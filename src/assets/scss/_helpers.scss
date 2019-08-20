@@ -1,0 +1,81 @@
+// Grid size
+$--grid-size: 8 !default; /* 8px */
+
+@function rem($pixels, $context: 16) {
+  @return #{$pixels/$context}rem;
+}
+@function halfGrid($number) {
+  @return rem(($--grid-size/2)*$number);
+}
+
+
+$cardinals-points: ( top , right , bottom , left );
+$space-type: ( padding , margin );
+$axes: ( y , x );
+
+// padding o margin general de num * gridSize convertido a rem con la teniendo en cuenta el tamaño de fuente del body 16px
+//   ejemplo gridSize = 8
+//   clase
+//   .ods-p-1 {
+//      padding: 0.25rem !important; ==> ((8/2) * 1) / 16 = 4px
+//    }
+//    .ods-m-4 {
+//      margin: 1rem !important; ==> ((8/2) * 4) / 16 = 16px
+//    }
+
+//
+@for $i from 0 through 12 {
+  @for $d from 0 to length($space-type) {
+    //
+    // clases para todos los ejes(top , right , bottom , left)
+    //  .ods-p-1
+    //  .ods-m-1
+    //
+    .ods-#{str-slice(nth($space-type, $d+1),0,1)}-#{$i}{
+      #{nth($space-type, $d+1)}: halfGrid($i)!important;
+    }
+    //
+    // clases para el eje y (top, bottom ) y el eje x (left, right )
+    //  .ods-py-1
+    //  .ods-my-1
+    //  .ods-px-1
+    //  .ods-mx-1
+    //
+    @for $f from 0 to length($axes) {
+      .ods-#{str-slice(nth($space-type, $d+1),0,1)}#{nth($axes, $f+1)}-#{$i}{
+        #{nth($space-type, $d+1)}-#{nth($cardinals-points, $f+1)}: halfGrid($i)!important;
+        #{nth($space-type, $d+1)}-#{nth($cardinals-points, $f+3)}: halfGrid($i)!important;
+      }
+    }
+    //
+    // clases para un único eje: top , right , bottom , left
+    //  .ods-pt-1
+    //  .ods-pl-1
+    //  .ods-pr-1 .ods-pb-1
+    //
+    @for $e from 0 to length($cardinals-points) {
+      .ods-#{str-slice(nth($space-type, $d+1),0,1)}#{str-slice(nth($cardinals-points, $e+1),0,1)}-#{$i}{
+        #{nth($space-type, $d+1)}-#{nth($cardinals-points, $e+1)}: halfGrid($i)!important;
+      }
+    }
+  }
+}
+
+// display helpers, add as many as you need
+$displays: (block, inline, inline-block, flex, none);
+
+// renders .ods-d-block, .ods-d-inline, .ods-d-none, etc
+@each $display in $displays {
+  .ods-d-#{$display} {
+    display: #{$display} !important;
+  }
+}
+
+// align helpers
+$aligns: (left, right, center, justify);
+// renders .ods-text-left, .ods-text-center, etc
+@each $align in $aligns {
+  .ods-text-#{$align} {
+    text-align: #{$align} !important;
+  }
+}
