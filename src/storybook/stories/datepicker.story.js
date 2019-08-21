@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { boolean, select, text, array } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import datepickerMd from '../md/datepicker.md'
 const stories = storiesOf('ODS/Datepicker', module)
@@ -76,6 +77,7 @@ types.forEach(type => {
     :calendar-always-visible="calendarAlwaysVisible"
     :hidden-inputs="hiddenInputs"
     :default-time="defaultTime"
+    @change="handleChange"
     :key="componentKey">
     </ods-date-picker>
     <ods-tag
@@ -150,6 +152,10 @@ types.forEach(type => {
           const pickerPanel = this.$root.$el.querySelector('.ods-picker-panel')
           pickerPanel && pickerPanel.remove()
         }
+      },
+
+      methods: {
+        handleChange: action('change')
       }
     }),
     {

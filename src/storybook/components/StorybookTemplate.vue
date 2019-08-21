@@ -43,7 +43,8 @@ export default {
       sampleTemplate: '',
       samplesAccordionKey: 0,
       sampleProps: null,
-      sampleData: null
+      sampleData: null,
+      sampleMethods: null
     }
   },
 
