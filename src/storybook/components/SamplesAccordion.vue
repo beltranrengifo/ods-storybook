@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import cloneDeep from 'lodash/cloneDeep'
+import _cloneDeep from 'lodash/cloneDeep'
 export default {
   name: 'SamplesAccordion',
 
@@ -93,8 +93,8 @@ export default {
         }
       }
 
-      let data = getComponentProperties(cloneDeep(this.sampleData))
-      let props = getComponentProperties(cloneDeep(this.sampleProps))
+      let data = getComponentProperties(_cloneDeep(this.sampleData))
+      let props = getComponentProperties(_cloneDeep(this.sampleProps))
 
       this.html = this.sampleTemplate ? `<!-- template --> ${this.sampleTemplate}` : ''
       this.js += data ? `// data\n{\n  ${data}}` : ''
