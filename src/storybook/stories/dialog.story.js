@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text, select, color, number } from '@storybook/addon-knobs'
+import { boolean, text, select, color } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import dialogMd from '../md/dialog.md'
 import getIcons from '../utils/icons'
@@ -30,7 +30,6 @@ const templateDefault = `
     :title="title"
     :visible.sync="dialogVisible"
     :width="width"
-    :before-close="handleBeforeClose"
     :append-to-body="appendToBody"
     :center="center"
     :icon="icon"
@@ -46,6 +45,7 @@ const templateDefault = `
     :close-on-click-modal="closeOnClickModal"
     :close-on-press-escape="closeOnPressEscape"
     :show-close="showClose"
+    :before-close="handleBeforeClose"
     @open="handleOpen"
     @close="handleClose"
     :key="componentKey">
@@ -111,7 +111,7 @@ stories.add(
         default: boolean('Lock scroll', true)
       },
       customClass: {
-        default: text('Custom CSS class', null)
+        default: text('Custom CSS class', '')
       },
       closeOnClickModal: {
         default: boolean('Close on click in mask', true)
@@ -157,7 +157,6 @@ const customTemplate = `
     :title="title"
     :visible.sync="dialogVisible"
     :width="width"
-    :before-close="handleClose"
     :append-to-body="appendToBody"
     :center="center"
     :icon="icon"
@@ -173,6 +172,7 @@ const customTemplate = `
     :close-on-click-modal="closeOnClickModal"
     :close-on-press-escape="closeOnPressEscape"
     :show-close="showClose"
+    :before-close="handleBeforeClose"
     @open="handleOpen"
     @close="handleClose"
     :key="componentKey">
@@ -189,6 +189,10 @@ const customTemplate = `
         property="address"
         label="Address" />
     </ods-table>
+    <div slot="footer" class="dialog-footer">
+      <ods-button type="text" @click="dialogVisible = false">Cancel</ods-button>
+      <ods-button @click="dialogVisible = false">Ok</ods-button>
+    </div>
   </ods-dialog>
 </storybook-template>
   `
@@ -218,7 +222,8 @@ stories.add(
             name: 'John Smith',
             address: 'No.1518, Jinshajiang Road, Putuo District'
           }
-        ]
+        ],
+        reRenderWatchers: ['modal', 'lockScroll']
       }
     },
 
@@ -263,7 +268,7 @@ stories.add(
         default: boolean('Lock scroll', true)
       },
       customClass: {
-        default: text('Custom CSS class', null)
+        default: text('Custom CSS class', '')
       },
       closeOnClickModal: {
         default: boolean('Close on click in mask', true)
@@ -282,7 +287,7 @@ stories.add(
           await this.$confirm('Are you sure to close this dialog?')
           done()
         } catch (e) {
-          console.error(e)
+          console.error(`${e}: Cancelled by the user`)
         }
       },
       handleOpen: action('opened!'),

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { configure, addParameters, addDecorator } from '@storybook/vue'
+import { DocsPage } from '@storybook/addon-docs/blocks'
 import { withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import { withNotes } from '@storybook/addon-notes'
@@ -51,7 +52,10 @@ addParameters({
   },
   a11y: {
     element: '.ods-storybook__component .ods-module__body'
-  }
+  },
+  docs: ({ context }) => (
+    <DocsPage context={context} descriptionSlot={({ parameters }) => parameters.notes} />
+  )
 })
 
 configure(loadStories, module)
