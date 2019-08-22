@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, select, optionsKnob, files } from '@storybook/addon-knobs'
+import { text, optionsKnob, files } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import actionsMenuMd from '../md/actions-menu.md'
@@ -14,20 +14,20 @@ const types = [
   'img'
 ]
 
-const positions = [
-  'top-start',
-  'top',
-  'top-end',
-  'left-start',
-  'left',
-  'left-end',
-  'right-start',
-  'right',
-  'right-end',
-  'bottom-start',
-  'bottom',
-  'bottom-end'
-]
+const positions = {
+  'Top start': 'top-start',
+  Top: 'top',
+  'Top end': 'top-end',
+  'Left start': 'left-start',
+  Left: 'left',
+  'Left end': 'left-end',
+  'Right start': 'right-start',
+  Right: 'right',
+  'Right end': 'right-end',
+  'Bottom start': 'bottom-start',
+  Bottom: 'bottom',
+  'Bottom end': 'bottom-end'
+}
 
 types.forEach(type => {
   const templateDefault = `
@@ -87,10 +87,10 @@ types.forEach(type => {
           default: text('Mobile width', '', 'Common')
         },
         popoverPosition: {
-          default: select('Postion', positions, 'bottom-start', 'Common')
+          default: optionsKnob('Postion', positions, 'bottom-start', { display: 'select' }, 'Common')
         },
         mobilePopoverPosition: {
-          default: select('Mobile postion', positions, 'bottom-start', 'Common')
+          default: optionsKnob('Mobile postion', positions, 'bottom-start', { display: 'select' }, 'Common')
         },
         boundariesElement: {
           default: text('Boundaries', '#root', 'Common')

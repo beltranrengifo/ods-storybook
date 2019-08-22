@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, select, text, array } from '@storybook/addon-knobs'
+import { boolean, text, array, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import datepickerMd from '../md/datepicker.md'
@@ -15,9 +15,20 @@ const types = [
   { type: 'datetimerange', name: 'date and time range' }
 ]
 
-const sizes = ['micro', 'deci', 'hecto', 'mega', 'exa']
+const sizes = {
+  Default: '',
+  Micro: 'micro',
+  Deci: 'deci',
+  Hecto: 'hecto',
+  Mega: 'mega',
+  Exa: 'exa'
+}
 
-const aligns = ['left', 'center', 'right']
+const aligns = {
+  Left: 'left',
+  Center: 'center',
+  Right: 'right'
+}
 
 const d = new Date()
 const mm = d.getMonth() + 1
@@ -110,7 +121,7 @@ types.forEach(type => {
           default: boolean('Use options', false)
         },
         size: {
-          default: select('Size', sizes, '')
+          default: optionsKnob('Size', sizes, '', { display: 'select' })
         },
         format: {
           default: text('Format (ver date formats)', '')
@@ -125,7 +136,7 @@ types.forEach(type => {
           default: type.type.includes('range') ? text('End placeholder', 'Fin') : null
         },
         align: {
-          default: select('Align', aligns, 'left')
+          default: optionsKnob('Align', aligns, 'left', { display: 'select' })
         },
         unlinkPanels: {
           default: type.type.includes('range') ? boolean('Unlink panels (panel follow panel)', false) : null

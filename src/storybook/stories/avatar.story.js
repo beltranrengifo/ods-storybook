@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { select } from '@storybook/addon-knobs'
+import { optionsKnob } from '@storybook/addon-knobs'
 import avatarMd from '../md/avatar.md'
 const stories = storiesOf('ODS/Avatar', module)
 
@@ -17,7 +17,7 @@ stories.add(
     template: templateDefault,
     props: {
       size: {
-        default: select('Size', ['small', 'medium', 'large', 'xlarge'], 'medium')
+        default: optionsKnob('Size', { Small: 'small', Medium: 'medium', Large: 'large', Xlarge: 'xlarge' }, 'medium', { display: 'select' })
       }
     }
   }),

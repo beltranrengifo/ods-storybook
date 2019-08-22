@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text, select, color } from '@storybook/addon-knobs'
+import { boolean, text, select, color, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import dialogMd from '../md/dialog.md'
 import getIcons from '../utils/icons'
@@ -7,16 +7,16 @@ const icons = getIcons()
 icons.success = 'success'
 const stories = storiesOf('ODS/Dialog', module)
 
-const transitions = [
-  'fade-in-linear',
-  'expand',
-  'ods-slide-in-left',
-  'ods-zoom-in-center',
-  'ods-zoom-in-top',
-  'ods-zoom-in-bottom',
-  'ods-zoom-in-left',
-  'ods-list'
-]
+const transitions = {
+  'Fade in linear': 'fade-in-linear',
+  Expand: 'expand',
+  'ODS slide in left': 'ods-slide-in-left',
+  'ODS zoom in center': 'ods-zoom-in-center',
+  'ODS zoom in top': 'ods-zoom-in-top',
+  'ODS zoom in bottom': 'ods-zoom-in-bottom',
+  'ODS zoom in left': 'ods-zoom-in-left',
+  'ODS list': 'ods-list'
+}
 
 /* default */
 const templateDefault = `
@@ -81,10 +81,10 @@ stories.add(
         default: boolean('Append to body', true)
       },
       center: {
-        default: boolean('Center content', false)
+        default: boolean('Centered content', false)
       },
       icon: {
-        default: select('Icon', icons, '')
+        default: optionsKnob('Icon', icons, '', { display: 'select' })
       },
       iconColor: {
         default: color('Icon color', '#87BEE6')
@@ -93,7 +93,7 @@ stories.add(
         default: text('Icon size', '32')
       },
       transitionName: {
-        default: select('Transition', transitions, transitions[0])
+        default: optionsKnob('Transition', transitions, 'fade-in-linear', { display: 'select' })
       },
       fullscreen: {
         default: boolean('Fullscreen', false)
@@ -238,10 +238,10 @@ stories.add(
         default: boolean('Append to body', true)
       },
       center: {
-        default: boolean('Center content', false)
+        default: boolean('Centered content', false)
       },
       icon: {
-        default: select('Icon', icons, '')
+        default: optionsKnob('Icon', icons, '', { display: 'select' })
       },
       iconColor: {
         default: color('Icon color', '#87BEE6')
@@ -250,7 +250,7 @@ stories.add(
         default: text('Icon size', '32')
       },
       transitionName: {
-        default: select('Transition', transitions, transitions[0])
+        default: optionsKnob('Transition', transitions, 'fade-in-linear', { display: 'select' })
       },
       fullscreen: {
         default: boolean('Fullscreen', false)

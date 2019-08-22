@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text, select, number } from '@storybook/addon-knobs'
+import { boolean, text, number, optionsKnob } from '@storybook/addon-knobs'
 import { capitalize } from '../utils/functions'
 import badgeMd from '../md/badge.md'
 const stories = storiesOf('ODS/Badge', module)
@@ -12,6 +12,15 @@ const types = [
   'danger',
   'info'
 ]
+
+const typesObj = {
+  Primary: 'primary',
+  Secondary: 'secondary',
+  Success: 'success',
+  Warning: 'warning',
+  Danger: 'danger',
+  Info: 'info'
+}
 
 types.forEach(type => {
   const templateDefault = `
@@ -65,7 +74,7 @@ stories.add(
     template: templateWithElement,
     props: {
       type: {
-        default: select('Type', types, 'secondary')
+        default: optionsKnob('Type', typesObj, 'secondary', { display: 'select' })
       },
       value: {
         default: number('Value (as Number)', 4)

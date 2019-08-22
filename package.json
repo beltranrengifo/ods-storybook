@@ -10,7 +10,7 @@
     "sb": "vue-cli-service storybook:serve -p 6006 -s ./public -c config/storybook --ci"
   },
   "dependencies": {
-    "@onesait/onesait-ds": "0.1.88",
+    "@onesait/onesait-ds": "^0.1.93",
     "@storybook/vue": "^5.1.10",
     "highlight.js": "^9.15.8",
     "jsdom": "^15.1.1",

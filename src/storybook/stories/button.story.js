@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, boolean, select, optionsKnob } from '@storybook/addon-knobs'
+import { text, boolean, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { capitalize } from '../utils/functions'
 import buttonMd from '../md/button.md'
@@ -44,7 +44,7 @@ types.forEach(type => {
           default: text('Text', 'Welcome to ODS')
         },
         size: {
-          default: select('Size', ['default', 'medium', 'small'], 'default')
+          default: optionsKnob('Size', { Default: 'default', Medium: 'medium', Small: 'small' }, 'default', { display: 'select' })
         },
         disabled: {
           default: boolean('Disabled', false)

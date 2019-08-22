@@ -56,8 +56,9 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
-      this.sampleProps = this.demoData.props
-      this.sampleData = this.demoData.data
+
+      this.sampleProps = this.demoData && this.demoData.props
+      this.sampleData = this.demoData && this.demoData.data
     })
     this.sampleTemplate = this.$slots.default[0].componentInstance.$root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template.replace(/\s*:key="componentKey"\s*/g, '')
   }

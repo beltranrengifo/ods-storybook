@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text, select } from '@storybook/addon-knobs'
+import { boolean, text, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import cascaderMd from '../md/cascader.md'
 import options from '../utils/cascader-options'
@@ -35,7 +35,7 @@ stories.add(
         default: boolean('Show label', true)
       },
       expandTrigger: {
-        default: select('Trigger', ['click', 'hover'], 'click')
+        default: optionsKnob('Trigger', { Click: 'click', Hover: 'hover' }, 'click', { display: 'select' })
       },
       disabled: {
         default: boolean('Disabled option', true)
