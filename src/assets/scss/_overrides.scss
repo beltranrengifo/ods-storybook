@@ -1,0 +1,14 @@
+// form story adjustments
+.form--story {
+  .ods-checkbox+.ods-checkbox {
+    margin-left: 0;
+    &:nth-child(even) {
+      margin-left: 16px;
+    }
+  }
+  .separator {
+    border-left: 1px solid $--color-white;
+    float: left;
+    height: 32px;
+  }
+}
