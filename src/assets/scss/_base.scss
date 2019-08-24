@@ -5,3 +5,25 @@ html, body {
   font-kerning: none;
   scrollbar-width: none;
 }
+
+.input-slot-icon {
+  line-height: 32px;
+}
+.ods-input__suffix {
+  padding-right: 8px;
+}
+
+.ods-input-group__prepend,
+.ods-input-group__append {
+  .input-slot-icon {
+    line-height: 30px;
+  }
+}
+
+.ods-form-item__label ~ .ods-input__prefix {
+  .ods-input__icon {
+    line-height: 58px;
+    top: 12px;
+    position: relative;
+  }
+}

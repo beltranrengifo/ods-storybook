@@ -2117,23 +2117,23 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
+"@storybook/vue@5.1.11":
+  version "5.1.11"
+  resolved "https://registry.yarnpkg.com/@storybook/vue/-/vue-5.1.11.tgz#440c260afa46247e80431470ee50e2725e06b579"
+  integrity sha512-hhCBfYyoBHehZf2P4BO9C1CuvY9m9GfiaWwqKl8WTGSdy8H6no5ZCRkG2SskS/h+mzJ1+WIGqnHkm0iIDz6KSg==
+  dependencies:
+    "@storybook/core" "5.1.11"
+    common-tags "^1.8.0"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    regenerator-runtime "^0.12.1"
+
 "@storybook/vue@^4.1.0 || ^5.0.0":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/vue/-/vue-5.1.9.tgz#ff37730e3d9575b389dddc6870a07c34c7a53e47"
   integrity sha512-ssBQOHdArHFn/FXVsXqi+FiiSvnulux6CIjmaZTjWMgktDa1Hp7TWFN3rlYCM+WxO2KBtydK5AyRWd8+r9YelQ==
   dependencies:
     "@storybook/core" "5.1.9"
-    common-tags "^1.8.0"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    regenerator-runtime "^0.12.1"
-
-"@storybook/vue@^5.1.11":
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/@storybook/vue/-/vue-5.1.11.tgz#440c260afa46247e80431470ee50e2725e06b579"
-  integrity sha512-hhCBfYyoBHehZf2P4BO9C1CuvY9m9GfiaWwqKl8WTGSdy8H6no5ZCRkG2SskS/h+mzJ1+WIGqnHkm0iIDz6KSg==
-  dependencies:
-    "@storybook/core" "5.1.11"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     global "^4.3.2"

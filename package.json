@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@onesait/onesait-ds": "^0.1.93",
-    "@storybook/vue": "^5.1.11",
     "highlight.js": "^9.15.8",
     "jsdom": "^15.1.1",
     "lodash": "^4.17.15",
@@ -32,6 +31,7 @@
     "@storybook/addon-storysource": "^5.1.9",
     "@storybook/addon-viewport": "^5.1.9",
     "@storybook/source-loader": "^5.2.0-alpha.14",
+    "@storybook/vue": "5.1.11",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
