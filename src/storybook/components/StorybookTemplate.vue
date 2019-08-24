@@ -51,16 +51,25 @@ export default {
   methods: {
     refreshSamples () {
       this.samplesAccordionKey++
+      this.sampleTemplate = this.getTemplate()
+    },
+    getTemplate () {
+      if (this.$slots.default[0].componentInstance) {
+        // when the slot has components
+        return this.$slots.default[0].componentInstance.$root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template.replace(/\s*:key="componentKey"\s*/g, '')
+      } else {
+        // when the slot has plain HTML (ie. icon)
+        return `\n${this.$slots.default[0].elm.outerHTML}`
+      }
     }
   },
 
   mounted () {
     this.$nextTick(() => {
-
       this.sampleProps = this.demoData && this.demoData.props
       this.sampleData = this.demoData && this.demoData.data
     })
-    this.sampleTemplate = this.$slots.default[0].componentInstance.$root.STORYBOOK_COMPONENT.extendOptions.STORYBOOK_WRAPS.extendOptions.template.replace(/\s*:key="componentKey"\s*/g, '')
+    this.sampleTemplate = this.getTemplate()
   }
 }
 </script>
