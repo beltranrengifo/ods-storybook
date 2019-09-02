@@ -44,6 +44,7 @@ const propsStr = `:size="size"
     :placeholder="placeholder"
     :isWhite="isWhite"
     :label="label"
+    :clearable="clearable"
     :id="id"
     :disabled="disabled"
     :type="type"
@@ -153,6 +154,9 @@ templates.forEach(template => {
         },
         readonly: {
           default: boolean('Readonly', false)
+        },
+        clearable: {
+          default: boolean('Clearable', true)
         },
         prefixIcon: {
           default: template.name !== 'slots' ? optionsKnob('Prefix icon', icons, '', { display: 'select' }) : null

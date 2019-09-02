@@ -75,7 +75,9 @@ export default {
     },
 
     getSampleStrings () {
-      const formatJson = (key, val) => typeof val === 'function' ? val.toString().split('\n').map(e => e.trim().replace(/;/g, '')).join(' ') : val
+      const formatJson = (key, val) => {
+        return typeof val === 'function' ? val.toString().split('\n').map(e => e.trim().replace(/;/g, '')).join(' ') : val === undefined ? '' : val
+      }
       const functionToStringReplacer = str => str.replace(/(^')|('$)/g, '')
 
       const getComponentProperties = obj => {

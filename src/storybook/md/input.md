@@ -4,8 +4,6 @@ Ingresa datos usando el ratón o teclado.
 
 ## Uso básico
 
-
-
 ## Tamaño
 
 Añada el atributo `size` para cambiar el tamaño del Input. Además del tamaño predeterminado, hay otras opciones: `micro`, `deci`, `hecto`, `mega` y `exa`. **Por regla general se recomienda usar el input con ancho al 100%**.
@@ -57,6 +55,7 @@ Añada el atributo `size` para cambiar el tamaño del Input. Además del tamaño
 }
 </script>
 ```
+
 ## Fondo
 
 La prop `isWhite` permite usar el input con el fondo blanco. El color de texto no varía.
