@@ -1,8 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { optionsKnob, text, boolean, number } from '@storybook/addon-knobs'
 import inputNumberMd from '../md/input-number.md'
-import getIcons from '../utils/icons'
-const icons = getIcons('ods-icon-')
 const stories = storiesOf('ODS/Input number', module)
 
 const sizes = {
@@ -25,6 +23,12 @@ const templateDefault = `
     :id="id"
     :disabled="disabled"
     :name="name"
+    :precision="precision"
+    :min="min"
+    :max="max"
+    :zero-empty="zeroEmpty"
+    :step="step"
+    :controls="controls"
     :readonly="readonly">
   </ods-input-number>
 </storybook-template>
@@ -64,6 +68,21 @@ stories.add(
       isWhite: {
         default: boolean('White background', false)
       },
+      precision: {
+        default: number('Precision', 0)
+      },
+      min: {
+        default: number('Min', 0)
+      },
+      max: {
+        default: number('Max', 120)
+      },
+      controls: {
+        default: boolean('Controls', true)
+      },
+      step: {
+        default: number('Step', 1)
+      }
     }
   }),
   {

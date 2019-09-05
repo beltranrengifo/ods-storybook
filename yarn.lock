@@ -1181,10 +1181,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@onesait/onesait-ds@^0.1.93":
-  version "0.1.93"
-  resolved "https://registry.yarnpkg.com/@onesait/onesait-ds/-/onesait-ds-0.1.93.tgz#006f70606be96ce78c6c56cbad239c0d66f4c50b"
-  integrity sha512-v6Kwn59XPY5o9rGcFdpFqiFRu9/8ej0vG8rn7a+GBpsYeRVxOK1PdOJ16r0wCcWrhU8/wB1h6r9uJKPW4qjelg==
+"@onesait/onesait-ds@^0.1.96":
+  version "0.1.96"
+  resolved "https://registry.yarnpkg.com/@onesait/onesait-ds/-/onesait-ds-0.1.96.tgz#70ae20013da82b671dc1d560519f8c5190947005"
+  integrity sha512-efsDJVJc0JQPw8STTusLFqvQ6Dao6l9eMms9ExEoU2b9ASZKeif44tbHbKBDCYkmXnpDbhqxai0iQcLt+8Ls3A==
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
