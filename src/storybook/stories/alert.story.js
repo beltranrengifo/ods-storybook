@@ -17,7 +17,7 @@ types.forEach(type => {
 <storybook-template>
   <ods-alert
     :title="title || '${capitalize(type)} alert'"
-    type="${type}" 
+    type="${type}"
     :width="width"
     :closable="closable"
     :closeText="closeText"
