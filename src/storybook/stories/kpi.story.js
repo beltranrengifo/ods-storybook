@@ -31,7 +31,7 @@ stories.add(
         default: text('Resume', 'Lorem ipsum dolor')
       },
       ammount: {
-        default: number('Ammount', 3.45)
+        default: text('Ammount', '3.45')
       },
       unit: {
         default: text('Unit', '%')
