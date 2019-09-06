@@ -1,6 +1,9 @@
 <template>
   <div
     class="ods-storybook__basic-template">
+    <component-badges
+      v-if="componentVersion || componentlastUpdate"
+      :badges="[versionBadge, updatedBadge]"/>
     <ods-module
       class="ods-storybook__container ods-storybook__component"
       :class="{
@@ -20,12 +23,13 @@
 
 <script>
 import SamplesAccordion from './SamplesAccordion'
-
+import ComponentBadges from './ComponentBadges'
 export default {
   name: 'StoryBookTemplate',
 
   components: {
-    SamplesAccordion
+    SamplesAccordion,
+    ComponentBadges
   },
 
   props: {
@@ -49,7 +53,11 @@ export default {
       samplesAccordionKey: 0,
       sampleProps: null,
       sampleData: null,
-      sampleMethods: null
+      sampleMethods: null,
+      componentVersion: null,
+      versionBadge: '',
+      componentlastUpdate: null,
+      updatedBadge: ''
     }
   },
 
@@ -66,10 +74,19 @@ export default {
         // when the slot has plain HTML (ie. icon)
         return `\n${this.$slots.default[0].elm.outerHTML}`
       }
+    },
+    setBadges () {
+			const baseUrl = 'https://img.shields.io/badge/'
+			const urlOptions = '-blue.svg?style=flat&colorA=2c3e50&colorB=2E6C99'
+			this.versionBadge = this.componentVersion && `${baseUrl}version-${this.componentVersion}${urlOptions}`
+			this.updatedBadge = this.componentlastUpdate && `${baseUrl}updated-${this.componentlastUpdate}${urlOptions}`
     }
   },
 
   mounted () {
+    this.componentVersion = this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.version
+    this.componentlastUpdate = this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.lastDate
+    this.setBadges()
     this.$nextTick(() => {
       this.sampleProps = this.demoData && this.demoData.props
       this.sampleData = this.demoData && this.demoData.data

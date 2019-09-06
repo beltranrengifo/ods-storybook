@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue'
 import { boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import { Rate } from '@onesait/onesait-ds'
 import accordionMd from '../md/accordion.md'
 const stories = storiesOf('ODS/Accordion', module)
 
