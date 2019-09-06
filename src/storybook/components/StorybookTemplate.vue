@@ -2,7 +2,7 @@
   <div
     class="ods-storybook__basic-template">
     <component-badges
-      v-if="componentVersion || componentlastUpdate"
+      v-if="versionBadge || updatedBadge"
       :badges="[versionBadge, updatedBadge]"/>
     <ods-module
       class="ods-storybook__container ods-storybook__component"
@@ -54,9 +54,7 @@ export default {
       sampleProps: null,
       sampleData: null,
       sampleMethods: null,
-      componentVersion: null,
       versionBadge: '',
-      componentlastUpdate: null,
       updatedBadge: ''
     }
   },
@@ -75,18 +73,19 @@ export default {
         return `\n${this.$slots.default[0].elm.outerHTML}`
       }
     },
-    setBadges () {
+    setBadges (version, updated) {
 			const baseUrl = 'https://img.shields.io/badge/'
 			const urlOptions = '-blue.svg?style=flat&colorA=2c3e50&colorB=2E6C99'
-			this.versionBadge = this.componentVersion && `${baseUrl}version-${this.componentVersion}${urlOptions}`
-			this.updatedBadge = this.componentlastUpdate && `${baseUrl}updated-${this.componentlastUpdate}${urlOptions}`
+			this.versionBadge = version && `${baseUrl}version-${version}${urlOptions}`
+			this.updatedBadge = updated && `${baseUrl}updated-${updated}${urlOptions}`
     }
   },
 
   mounted () {
-    this.componentVersion = this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.version
-    this.componentlastUpdate = this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.lastDate
-    this.setBadges()
+    this.setBadges(
+      this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.version,
+      this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.lastDate
+    )
     this.$nextTick(() => {
       this.sampleProps = this.demoData && this.demoData.props
       this.sampleData = this.demoData && this.demoData.data

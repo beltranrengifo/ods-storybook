@@ -10,7 +10,6 @@ const propsStr = `:loading-title="title"
     :loading-background="background"
     :loading-white-text="whiteText"
     :loading-custom-class="customClass"
-    :lock="lock"
     :key="componentKey"
 `
 
@@ -39,7 +38,7 @@ const templateDirective = `
     v-loading.fullscreen.lock="fullscreenLoading"
     @click="openFullScreenDirective"
     ${propsStr}>
-    Vue directive
+    As a Vue directive
   </ods-button>
 </storybook-template>
 `
@@ -50,7 +49,7 @@ const templateService = `
     type="primary"
     @click="openFullScreenService"
     ${propsStr}>
-    As a service
+    Loading as a service
   </ods-button>
 </storybook-template>
 `
