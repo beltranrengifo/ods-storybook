@@ -5,7 +5,8 @@
       class="ods-storybook__container ods-storybook__component"
       :class="{
         'is-negative': negative,
-        'justify-center': center
+        'justify-center': center,
+        'is-tall': tall
       }">
       <slot/>
     </ods-module>
@@ -33,6 +34,10 @@ export default {
       default: false
     },
     center: {
+      type: Boolean,
+      default: false
+    },
+    tall: {
       type: Boolean,
       default: false
     }
@@ -117,5 +122,12 @@ export default {
   }
   /deep/ .ods-actions-menu__button--text {
     width: 120px;
+  }
+  .is-tall {
+    min-height: 300px;
+    /deep/ .ods-logo a {
+      min-height: 340px;
+      width: 100% !important;
+    }
   }
 </style>

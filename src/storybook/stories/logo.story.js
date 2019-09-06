@@ -1,21 +1,21 @@
 import { storiesOf } from '@storybook/vue'
-import { text, number, boolean} from '@storybook/addon-knobs'
+import { text, number, boolean } from '@storybook/addon-knobs'
 import logoMd from '../md/logo.md'
 const stories = storiesOf('ODS/Logo', module)
 
 const templateDefault = `
-<storybook-template>
+<storybook-template tall>
   <ods-logo
     :style="[negative ? { backgroundColor: 'black' } : { backgroundColor: 'white' }]"
-    :size='size'
-    :suite='suite'
-    :product='product'
-    :productModule='productModule'
-    :width='width'
-    :secondary='secondary'
-    :negative='negative'
-    :homeLink='homeLink'
-    :simple='simple'>
+    :size="size"
+    :suite="suite"
+    :product="product"
+    :productModule="productModule"
+    :width="width"
+    :secondary="secondary"
+    :negative="negative"
+    :homeLink="homeLink"
+    :simple="simple">
   </ods-logo>
 </storybook-template>
   `
@@ -26,10 +26,10 @@ stories.add(
     props: {
       size: {
         default: number('Size', 1, {
-           range: true,
-           min: 1,
-           max: 5,
-           step: 1
+          range: true,
+          min: 1,
+          max: 4,
+          step: 0.1
         })
       },
       suite: {
