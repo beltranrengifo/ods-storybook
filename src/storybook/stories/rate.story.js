@@ -1,64 +1,97 @@
 import { storiesOf } from '@storybook/vue'
-import { boolean, text } from '@storybook/addon-knobs'
+import { array, boolean, text, color } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import { capitalize } from '../utils/functions'
-// import alarmMd from '../md/alert.md'
+import rateMd from '../md/rate.md'
 const stories = storiesOf('ODS/Rate', module)
 
-const types = [
-  'success',
-  'info',
-  'warning',
-  'error'
+const propsStr = `v-model="rateValue"
+  :colors="colors"
+  :texts="texts"
+  :show-text="showText"
+  :disabled="disabled"
+  :show-score="showScore"
+  :text-color="textColor"
+  :score-template="rateValue + scoreTemplate"
+  @change="handleChange"`
+
+const propsIcons = `:icon-classes="iconClasses"
+  :void-icon-class="voidIconClass"`
+
+const templateDefault = `
+<storybook-template>
+  <ods-rate
+    ${propsStr} />
+</storybook-template>
+`
+const templateIcons = `
+<storybook-template>
+  <ods-rate
+    ${propsStr}
+    ${propsIcons} />
+</storybook-template>
+`
+
+const templates = [
+  {
+    name: 'Default',
+    template: templateDefault
+  },
+  {
+    name: 'Custom icons',
+    template: templateIcons
+  }
 ]
 
-types.forEach(type => {
-  const templateDefault = `
-<storybook-template>
-  <ods-alert
-    :title="title || '${capitalize(type)} alert'"
-    type="${type}"
-    :width="width"
-    :closable="closable"
-    :closeText="closeText"
-    :showIcon="showIcon"
-    :description="description"
-    @close="handleClose">
-  </ods-alert>
-</storybook-template>
-  `
+templates.forEach(template => {
+  const isIconsTemplate = str => str === 'Custom icons'
+
   stories.add(
-    capitalize(type),
+    template.name,
     () => ({
-      template: templateDefault,
+      template: template.template,
+      data () {
+        return {
+          rateValue: 0
+        }
+      },
       methods: {
-        handleClose: action('closed')
+        handleChange: action('changed')
       },
       props: {
-        title: {
-          default: text('title', `${capitalize(type)} alert`)
+        colors: {
+          default: array('Rating colors', ['#99A9BF', '#F7BA2A', '#FF9900'], '  |  ')
         },
-        width: {
-          default: text('Width', '400')
+        showText: {
+          default: boolean('Show rating texts', true)
         },
-        closable: {
-          default: boolean('Closable', true)
+        texts: {
+          default: array('Rating texts', ['So bad', '  Bad', '  Not bad', '  Good', '  Really good'], '  |  ')
         },
-        closeText: {
-          default: text('Close text', '')
+        iconClasses: {
+          default: isIconsTemplate(template.name) ? array('Icon classes', ['icon-smile-frown', '  icon-smile-meh', '  icon-smile-smile'], '  |  ') : null
         },
-        showIcon: {
-          default: boolean('Show icon', false)
+        voidIconClass: {
+          default: isIconsTemplate(template.name) ? text('Void icon', 'icon-smile-meh') : null
         },
-        description: {
-          default: text('Description', '')
+        disabled: {
+          default: boolean('Disabled (read only)', false)
+        },
+        showScore: {
+          default: boolean('Show score', false)
+        },
+        textColor: {
+          default: color('Text color', '#ff9900')
+        },
+        scoreTemplate: {
+          default: text('Score text template', ' points')
         }
       }
     }),
     {
       notes: {
-        // markdown: alarmMd
+        markdown: rateMd
       }
     }
   )
 })
+

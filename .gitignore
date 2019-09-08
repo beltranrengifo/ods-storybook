@@ -2,6 +2,7 @@
 node_modules
 /dist
 .history
+storybook-static
 
 # local env files
 .env.local
