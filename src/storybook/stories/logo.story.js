@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, number, boolean} from '@storybook/addon-knobs'
+import { text, number, boolean, button} from '@storybook/addon-knobs'
 import logoMd from '../md/logo.md'
 const stories = storiesOf('ODS/Logo', module)
 
@@ -21,43 +21,50 @@ const templateDefault = `
   `
 stories.add(
   'Default',
-  () => ({
-    template: templateDefault,
-    props: {
-      size: {
-        default: number('Size', 1, {
-           range: true,
-           min: 1,
-           max: 5,
-           step: 1
-        })
-      },
-      suite: {
-        default: text('Suite', 'suite')
-      },
-      product: {
-        default: text('Product', 'product')
-      },
-      productModule: {
-        default: text('Product module', 'module')
-      },
-      width: {
-        default: number('Width', 275)
-      },
-      secondary: {
-        default: boolean('Secundary', false)
-      },
-      negative: {
-        default: boolean('Negative', false)
-      },
-      homeLink: {
-        default: boolean('Home link', true)
-      },
-      simple: {
-        default: boolean('Simple', false)
+  () => {
+    return ({
+      template: templateDefault,
+      props: {
+        size: {
+          default: number('Size', 1, {
+             range: true,
+             min: 1,
+             max: 5,
+             step: 1
+          })
+        },
+        suite: {
+          default: text('Suite', 'suite')
+        },
+        product: {
+          default: text('Product', 'product')
+        },
+        productModule: {
+          default: text('Product module', 'module')
+        },
+        width: {
+          default: number('Width', 275)
+        },
+        secondary: {
+          default: boolean('Secundary', false)
+        },
+        negative: {
+          default: boolean('Negative', false)
+        },
+        homeLink: {
+          default: boolean('Home link', true)
+        },
+        simple: {
+          default: boolean('Simple', false)
+        },
+        download: {
+          default: button('Download logo', () => {
+            console.log('downloading')
+          })
+        }
       }
-    }
-  }),
+    })
+  },
   {
     notes: {
       markdown: logoMd
