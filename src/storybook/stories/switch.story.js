@@ -9,8 +9,6 @@ const stories = storiesOf('ODS/Switch', module)
 const templateDefault = `
 <storybook-template>
   <ods-switch
-    ref='switch'
-    style="display: block"
     v-model='value'
     :disabled='disabled'
     :width='width'
