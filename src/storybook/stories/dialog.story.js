@@ -1,22 +1,12 @@
 import { storiesOf } from '@storybook/vue'
 import { boolean, text, select, color, optionsKnob } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import transitions from '../utils/transitions'
 import dialogMd from '../md/dialog.md'
 import getIcons from '../utils/icons'
 const icons = getIcons()
 icons.success = 'success'
 const stories = storiesOf('ODS/Dialog', module)
-
-const transitions = {
-  'Fade in linear': 'fade-in-linear',
-  Expand: 'expand',
-  'ODS slide in left': 'ods-slide-in-left',
-  'ODS zoom in center': 'ods-zoom-in-center',
-  'ODS zoom in top': 'ods-zoom-in-top',
-  'ODS zoom in bottom': 'ods-zoom-in-bottom',
-  'ODS zoom in left': 'ods-zoom-in-left',
-  'ODS list': 'ods-list'
-}
 
 /* default */
 const templateDefault = `
