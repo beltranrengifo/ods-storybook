@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, number, optionsKnob, boolean, color, button } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
+import { text, number, optionsKnob, boolean, button } from '@storybook/addon-knobs'
 import notificationsMd from '../md/notifications.md'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
