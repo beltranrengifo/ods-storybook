@@ -36,7 +36,7 @@ stories.add(
         default: number('Stroke width', 6)
       },
       textInside: {
-        default: boolean('Text inside', false)
+        default: boolean('Text inside (type has to be line)', false)
       },
       status: {
         default: optionsKnob('Status', {success: 'success', exception: 'exception'}, 'success', { display: 'select' })
