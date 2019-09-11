@@ -2,18 +2,10 @@ import { storiesOf } from '@storybook/vue'
 import { optionsKnob, text, boolean, number } from '@storybook/addon-knobs'
 import { capitalize } from '../utils/functions'
 import inputMd from '../md/input.md'
+import sizes from '../utils/sizes'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
 const stories = storiesOf('ODS/Input', module)
-
-const sizes = {
-  'Default - 100%': 'default',
-  'Micro - 72px': 'micro',
-  'Deci - 152px': 'deci',
-  'Hecto - 204px': 'hecto',
-  'Mega - 304px': 'mega',
-  'Exa - 432px': 'exa'
-}
 
 const types = {
   Default: '',

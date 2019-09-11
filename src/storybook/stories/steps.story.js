@@ -4,6 +4,8 @@ import stepsMd from '../md/steps.md'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
 const stories = storiesOf('ODS/Steps', module)
+const stepsAttributes = 'Steps Attributes'
+const stepAttributes = 'Step Attributes'
 
 const direction = {
   vertical: 'vertical',
@@ -62,42 +64,43 @@ stories.add(
       }
     },
     props: {
+      // Steps Attributes
       dots: {
-        default: boolean('Dots', false)
+        default: boolean('Dots', false, stepsAttributes)
       },
       space: {
-        default: number('Space')
+        default: text('Space', '', stepsAttributes)
       },
       direction: {
-        default: optionsKnob('Direction', direction, 'horizontal', { display: 'select' })
+        default: optionsKnob('Direction', direction, 'horizontal', { display: 'select' }, stepsAttributes)
       },
       activeItem: {
-        default: number('Active', 0)
+        default: number('Active', 0, {}, stepsAttributes)
       },
       processStatus: {
-        default: optionsKnob('Process status', status, 'process', { display: 'select' })
+        default: optionsKnob('Process status', status, 'process', { display: 'select' }, stepsAttributes)
       },
       finishStatus: {
-        default: optionsKnob('Finish status', status, 'finish', { display: 'select' })
+        default: optionsKnob('Finish status', status, 'finish', { display: 'select' }, stepsAttributes)
       },
       alignCenter: {
-        default: boolean('Align center', false)
+        default: boolean('Align center', false, stepsAttributes)
       },
       simple: {
-        default: boolean('Simple', false)
+        default: boolean('Simple', false, stepsAttributes)
       },
-      // Attr
+      // Step Attributes
       title: {
-        default: text('Title', 'Step')
+        default: text('Title', 'Step', stepAttributes)
       },
       description: {
-        default: text('Description', '')
+        default: text('Description', '', stepAttributes)
       },
       icon: {
-        default: optionsKnob('Icon', icons, '', { display: 'select' })
+        default: optionsKnob('Icon', icons, '', { display: 'select' }, stepAttributes)
       },
       status: {
-        default: optionsKnob('Status', status, '', { display: 'select' })
+        default: optionsKnob('Status', status, '', { display: 'select' }, stepAttributes)
       }
     }
   }),

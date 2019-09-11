@@ -3,6 +3,8 @@ import { text, optionsKnob, boolean } from '@storybook/addon-knobs'
 import tabsMd from '../md/tabs.md'
 import { action } from '@storybook/addon-actions'
 const stories = storiesOf('ODS/Tabs', module)
+const tabs = 'Tabs'
+const tabPane = 'Tab-pane'
 
 const templateDefault = `
 <storybook-template>
@@ -66,16 +68,16 @@ stories.add(
           'default': '',
           'card': 'card',
           'border-card': 'border-card'
-        }, '', { display: 'select' })
+        }, '', { display: 'select' }, tabs)
       },
       closable: {
-        default: boolean('Closable', false)
+        default: boolean('Closable', false, tabs)
       },
       addable: {
-        default: boolean('Addable', false)
+        default: boolean('Addable', false, tabs)
       },
       editable: {
-        default: boolean('Editable', false)
+        default: boolean('Editable', false, tabs)
       },
       tabPosition: {
         default: optionsKnob('Tab position', {
@@ -83,26 +85,26 @@ stories.add(
           'right': 'right',
           'bottom': 'bottom',
           'left': 'left'
-        }, 'top', { display: 'select' })
+        }, 'top', { display: 'select' }, tabs)
       },
       stretch: {
-        default: boolean('Stretch', false)
+        default: boolean('Stretch', false, tabs)
       },
       // Attr Tab-pane
       label: {
-        default: text('Label', 'New Tab')
+        default: text('Label', 'New Tab', tabPane)
       },
       disabled: {
-        default: boolean('Disabled', false)
+        default: boolean('Disabled', false, tabPane)
       },
       name: {
-        default: text('Name', '')
+        default: text('Name', '', tabPane)
       },
       closableTab: {
-        default: boolean('Closable(tab)', false)
+        default: boolean('Closable(tab)', false, tabPane)
       },
       lazy: {
-        default: boolean('Lazy', false)
+        default: boolean('Lazy', false, tabPane)
       }
     },
     methods: {
