@@ -1,11 +1,15 @@
 <template>
   <div
     class="ods-storybook__basic-template">
+    <component-badges
+      v-if="versionBadge || updatedBadge"
+      :badges="[versionBadge, updatedBadge]"/>
     <ods-module
       class="ods-storybook__container ods-storybook__component"
       :class="{
         'is-negative': negative,
-        'justify-center': center
+        'justify-center': center,
+        'is-tall': tall
       }">
       <slot/>
     </ods-module>
@@ -19,12 +23,13 @@
 
 <script>
 import SamplesAccordion from './SamplesAccordion'
-
+import ComponentBadges from './ComponentBadges'
 export default {
   name: 'StoryBookTemplate',
 
   components: {
-    SamplesAccordion
+    SamplesAccordion,
+    ComponentBadges
   },
 
   props: {
@@ -33,6 +38,10 @@ export default {
       default: false
     },
     center: {
+      type: Boolean,
+      default: false
+    },
+    tall: {
       type: Boolean,
       default: false
     }
@@ -44,7 +53,9 @@ export default {
       samplesAccordionKey: 0,
       sampleProps: null,
       sampleData: null,
-      sampleMethods: null
+      sampleMethods: null,
+      versionBadge: '',
+      updatedBadge: ''
     }
   },
 
@@ -61,10 +72,20 @@ export default {
         // when the slot has plain HTML (ie. icon)
         return `\n${this.$slots.default[0].elm.outerHTML}`
       }
+    },
+    setBadges (version, updated) {
+			const baseUrl = 'https://img.shields.io/badge/'
+			const urlOptions = '-blue.svg?style=flat&colorA=2c3e50&colorB=2E6C99'
+			this.versionBadge = version && `${baseUrl}version-${version}${urlOptions}`
+			this.updatedBadge = updated && `${baseUrl}updated-${updated}${urlOptions}`
     }
   },
 
   mounted () {
+    this.setBadges(
+      this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.version,
+      this.$slots.default[0].componentOptions && this.$slots.default[0].componentOptions.Ctor.extendOptions.lastDate
+    )
     this.$nextTick(() => {
       this.sampleProps = this.demoData && this.demoData.props
       this.sampleData = this.demoData && this.demoData.data
@@ -117,5 +138,12 @@ export default {
   }
   /deep/ .ods-actions-menu__button--text {
     width: 120px;
+  }
+  .is-tall {
+    min-height: 300px;
+    /deep/ .ods-logo a {
+      min-height: 340px;
+      width: 100% !important;
+    }
   }
 </style>

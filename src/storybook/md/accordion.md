@@ -6,7 +6,6 @@ Use Accordion para almacenar contenidos.
 
 Puede expandir varios paneles
 
-
 ```
 <ods-accordion v-model="activeNames" @change="handleChange">
   <ods-accordion-item title="Consistency" name="1">

@@ -10,7 +10,7 @@ const types = [
 ]
 
 types.forEach(type => {
-  const templateDefault = 
+  const templateDefault =
   type.hasHeaderSlot ? `
     <storybook-template>
       <ods-module
@@ -34,7 +34,7 @@ types.forEach(type => {
       </ods-module>
     </storybook-template>
       `
-  : `
+    : `
     <storybook-template>
       <ods-module
         :header='header'
@@ -52,13 +52,13 @@ types.forEach(type => {
       template: templateDefault,
       props: {
         header: {
-          default: !type.hasHeaderSlot ? text('header', 'Module Title') : null
+          default: !type.hasHeaderSlot ? text('Header text', 'Module Title') : null
         },
         bodyStyle: {
-          default: object('body-style', { padding: '0 24px 24px' })
+          default: object('Body styles', { padding: '0 24px 24px' })
         },
         shadow: {
-          default: optionsKnob('shadow', { always: 'always', hover: 'hover', never: 'never' }, 'always', { display: 'select' })
+          default: optionsKnob('Use shadow', { Always: 'always', Hover: 'hover', Never: 'never' }, 'always', { display: 'select' })
         }
       }
     }),
