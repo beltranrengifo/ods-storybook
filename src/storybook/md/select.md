@@ -845,6 +845,7 @@ Para tener el select accesible (AAA) es necesario agregarle un label, mediante l
 ## Select atributos
 | Atributo             | Descripción                              | Tipo     | Valores aceptados | Por defecto      |
 | -------------------- | ---------------------------------------- | -------- | ----------------- | ---------------- |
+| outlined             | permite usar el diseño de línea          | boolean  | —                 | false            |
 | multiple             | si multiple-select esta activo           | boolean  | —                 | false            |
 | disabled             | si Select esta deshabilitado             | boolean  | —                 | false            |
 | collapse-tags        | si se colapsan los tags a un texto cuando `multiple` es `true`. | boolean  | —                 | false            |

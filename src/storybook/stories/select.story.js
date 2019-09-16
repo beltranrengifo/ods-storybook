@@ -12,6 +12,7 @@ const templateDefault = `
 <storybook-template>
   <ods-select
     v-model='value'
+    :outlined='outlined'
     :multiple='multiple'
     :disabled='disabled'
     :collapse-tags='collapseTags'
@@ -38,7 +39,8 @@ const templateDefault = `
     @remove-tag='handleRemoveTag'
     @clear='handleClear'
     @blur='handleBlur'
-    @focus='handleFocus'>
+    @focus='handleFocus'
+    :key='componentKey'>
     <ods-option
       v-for='item in options'
       :key='item.value'
@@ -71,7 +73,8 @@ stories.add(
           value: 'Option5',
           label: 'Option5'
         }],
-        value: ''
+        value: '',
+        reRenderWatchers: ['outlined']
       }
     },
     watch: {
@@ -86,6 +89,9 @@ stories.add(
     },
     props: {
       // Select Attributes
+      outlined: {
+        default: boolean('Outlined', false, selectAttributes)
+      },
       multiple: {
         default: boolean('Multiple', false, selectAttributes)
       },

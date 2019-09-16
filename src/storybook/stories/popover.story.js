@@ -26,7 +26,7 @@ const templateDefault = `
     @after-enter='handleAfterEnter'
     @hide='handleHide'
     @after-leave='handleAfterLeave'
-    :key="componentKey">
+    :key='componentKey'>
     <ods-button
       :style='{ marginLeft: "120px" }'
       slot='reference'

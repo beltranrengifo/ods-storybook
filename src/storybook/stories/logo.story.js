@@ -1,11 +1,12 @@
 import { storiesOf } from '@storybook/vue'
-import { text, number, boolean, button} from '@storybook/addon-knobs'
+import { text, number, boolean, button } from '@storybook/addon-knobs'
 import logoMd from '../md/logo.md'
 const stories = storiesOf('ODS/Logo', module)
 
 const templateDefault = `
 <storybook-template>
   <ods-logo
+    ref='logo'
     :style="[negative ? { backgroundColor: 'black' } : { backgroundColor: 'white' }]"
     :size='size'
     :suite='suite'
@@ -24,6 +25,20 @@ stories.add(
   () => {
     return ({
       template: templateDefault,
+      data () {
+        return {
+          downloaded: false 
+        }
+      },
+      watch: {
+        'downloaded': function (newVal, oldVal) {
+          console.log('newVal', newVal)
+          console.log('oldVal', oldVal)
+          if (newVal) {
+            this.downloadLogo()
+          }
+        }
+      },
       props: {
         size: {
           default: number('Size', 1, {
@@ -57,10 +72,32 @@ stories.add(
         simple: {
           default: boolean('Simple', false)
         },
-        download: {
-          default: button('Download logo', () => {
-            console.log('downloading')
-          })
+        downloadCurrentLogo: {
+          default: function () {
+            if (this) {
+              console.log('download', this)
+              this.downloaded = true
+            }
+            return button('Download logo', () => {
+              console.log('clicked', arguments)
+            })
+          }
+        }
+      },
+      methods: {
+        downloadLogo () {
+          let svg = this.$refs.logo.$el.getElementsByTagName('svg')
+          let svgData = svg[0].outerHTML
+          let svgBlob = new Blob([svgData], {type:'image/svg+xmlcharset=utf-8'})
+          let svgUrl = URL.createObjectURL(svgBlob)
+
+          let downloadLink = document.createElement('a')
+          downloadLink.href = svgUrl
+          downloadLink.download = 'logo.svg'
+          document.body.appendChild(downloadLink)
+          downloadLink.click()
+          document.body.removeChild(downloadLink)
+          this.downloaded = false
         }
       }
     })
