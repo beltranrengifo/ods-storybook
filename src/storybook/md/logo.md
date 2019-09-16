@@ -92,16 +92,16 @@ El funcionamiento como link se puede desactivar en caso necesario seteando a `fa
 
 ## Changelog
 
-## Version 0.0.1 (05/10/18)
+### Version 0.0.1 (05/10/18)
 
 Versión inicial
 
-## Version 0.0.2 (09/10/18)
+### Version 0.0.2 (09/10/18)
 
 Colores preestablecidos: default, secondary, negative
 Funcionamiento como link/router-link/span (desactivado)
 
-## Version 0.0.3 (24/10/18)
+### Version 0.0.3 (24/10/18)
 
 Versión simplificada
 	
