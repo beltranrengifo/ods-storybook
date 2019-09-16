@@ -5,17 +5,17 @@ import rateMd from '../md/rate.md'
 const stories = storiesOf('ODS/Rate', module)
 
 const propsStr = `v-model="rateValue"
-  :colors="colors"
-  :texts="texts"
-  :show-text="showText"
-  :disabled="disabled"
-  :show-score="showScore"
-  :text-color="textColor"
-  :score-template="rateValue + scoreTemplate"
-  @change="handleChange"`
+    :colors="colors"
+    :texts="texts"
+    :show-text="showText"
+    :disabled="disabled"
+    :show-score="showScore"
+    :text-color="textColor"
+    :score-template="rateValue + scoreTemplate"
+    @change="handleChange"`
 
 const propsIcons = `:icon-classes="iconClasses"
-  :void-icon-class="voidIconClass"`
+    :void-icon-class="voidIconClass"`
 
 const templateDefault = `
 <storybook-template>
@@ -94,4 +94,3 @@ templates.forEach(template => {
     }
   )
 })
-
