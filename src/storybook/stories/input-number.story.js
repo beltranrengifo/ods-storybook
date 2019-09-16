@@ -1,16 +1,8 @@
 import { storiesOf } from '@storybook/vue'
 import { optionsKnob, text, boolean, number } from '@storybook/addon-knobs'
 import inputNumberMd from '../md/input-number.md'
+import sizes from '../utils/sizes'
 const stories = storiesOf('ODS/Input number', module)
-
-const sizes = {
-  'Default - 100%': 'default',
-  'Micro - 72px': 'micro',
-  'Deci - 152px': 'deci',
-  'Hecto - 204px': 'hecto',
-  'Mega - 304px': 'mega',
-  'Exa - 432px': 'exa'
-}
 
 const templateDefault = `
 <storybook-template>
