@@ -21,6 +21,8 @@ const templateDefault = `
     :active-color='activeColor'
     :inactive-color='inactiveColor'
     :name='name'
+    :label-text='labelText'
+    :id='id'
     @change='handleChange'
     :key="componentKey">
   </ods-switch>
@@ -69,6 +71,12 @@ stories.add(
       },
       name: {
         default: text('Name', '')
+      },
+      labelText: {
+        default: text('Label text (Accesibilidad)', '')
+      },
+      id: {
+        default: text('Id (Accesibilidad. El id es necesario para el atributo for del label y el id del propio input)', '')
       }
     },
     methods: {

@@ -1,16 +1,10 @@
 import { storiesOf } from '@storybook/vue'
 import { text, number, optionsKnob, boolean, button } from '@storybook/addon-knobs'
 import notificationsMd from '../md/notifications.md'
+import types from '../utils/types'
 import getIcons from '../utils/icons'
 const icons = getIcons('ods-icon-')
 const stories = storiesOf('ODS/Notification', module)
-
-const types = {
-  success: 'success',
-  info: 'info',
-  warning : 'warning',
-  error: 'error'
-}
 
 const templateDefault = `
 <storybook-template>
