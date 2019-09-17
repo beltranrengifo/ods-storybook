@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue'
-import { text, number, boolean, button } from '@storybook/addon-knobs'
+import { text, number, boolean } from '@storybook/addon-knobs'
 import logoMd from '../md/logo.md'
 const stories = storiesOf('ODS/Logo', module)
 
@@ -18,26 +18,14 @@ const templateDefault = `
     :homeLink="homeLink"
     :simple="simple">
   </ods-logo>
+  <br>
+  <ods-button @click='downloadLogo'>Download logo</ods-button>
 </storybook-template>
   `
 stories.add(
   'Default',
   () => ({
     template: templateDefault,
-    data () {
-      return {
-        downloaded: false
-      }
-    },
-    watch: {
-      'downloaded': function (newVal, oldVal) {
-        console.log('newVal', newVal)
-        console.log('oldVal', oldVal)
-        if (newVal) {
-          this.downloadLogo()
-        }
-      }
-    },
     props: {
       size: {
         default: number('Size', 1, {
@@ -70,17 +58,6 @@ stories.add(
       },
       simple: {
         default: boolean('Simple', false)
-      },
-      downloadCurrentLogo: {
-        default: function () {
-          if (this) {
-            console.log('download', this)
-            this.downloaded = true
-          }
-          return button('Download logo', () => {
-            console.log('clicked', arguments)
-          })
-        }
       }
     },
     methods: {
@@ -89,14 +66,12 @@ stories.add(
         let svgData = svg[0].outerHTML
         let svgBlob = new Blob([svgData], { type: 'image/svg+xmlcharset=utf-8' })
         let svgUrl = URL.createObjectURL(svgBlob)
-
         let downloadLink = document.createElement('a')
         downloadLink.href = svgUrl
         downloadLink.download = 'logo.svg'
         document.body.appendChild(downloadLink)
         downloadLink.click()
         document.body.removeChild(downloadLink)
-        this.downloaded = false
       }
     }
   }),
