@@ -8,7 +8,7 @@ const stories = storiesOf('ODS/Notification', module)
 const types = {
   success: 'success',
   info: 'info',
-  warning : 'warning',
+  warning: 'warning',
   error: 'error'
 }
 
@@ -32,7 +32,7 @@ stories.add(
         default: text('Message', 'This is a message')
       },
       dangerouslyUseHTMLString: {
-        default: boolean('Dangerously use HTML string', false)
+        default: boolean('use HTML in message', false)
       },
       type: {
         default: optionsKnob('Type', types, '', { display: 'select' })
@@ -59,12 +59,6 @@ stories.add(
       },
       offset: {
         default: number('Offset', 0)
-      },
-      close: {
-        default: button('Close', () => {
-          console.log('arguments', arguments)
-          // this.$notify.close()
-        })
       }
     },
     methods: {
@@ -78,7 +72,7 @@ stories.add(
           customClass: this._props.customClass,
           duration: this._props.duration,
           position: this._props.position,
-          showClose:  this._props.showClose,
+          showClose: this._props.showClose,
           onClose: this.onClose,
           onClick: this.onClick,
           offset: this._props.offset
@@ -95,6 +89,9 @@ stories.add(
   {
     notes: {
       markdown: notificationsMd
+    },
+    knobs: {
+      escapeHTML: false
     }
   }
 )
