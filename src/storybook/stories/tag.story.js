@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { optionsKnob, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import tagMd from '../md/tag.md'
+import types from '../utils/types'
 const stories = storiesOf('ODS/Tag', module)
 
 const templateDefault = `
@@ -23,13 +24,7 @@ stories.add(
     template: templateDefault,
     props: {
       type: {
-        default: optionsKnob('Type', {
-          default: '',
-          success: 'success',
-          info: 'info',
-          warning: 'warning',
-          danger: 'danger'
-        }, 'info', { display: 'select' })
+        default: optionsKnob('Type', types, 'info', { display: 'select' })
       },
       closable: {
         default: boolean('Closable', false)
