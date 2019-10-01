@@ -1,4 +1,5 @@
 const DisableWarnings = require('./disable-warnings.js')
+const maxAssetSize = 1024 * 1024
 
 module.exports = async ({ config, mode }) => {
   config.module.rules.push(
@@ -20,14 +21,23 @@ module.exports = async ({ config, mode }) => {
     },
     {
       test: /\.story\.jsx?$/,
-      loader: require.resolve('@storybook/addon-storysource/loader'),
-      options: {
-        uglyCommentsRegex: [/^eslint-.*/, /^global.*/]
-      },
+      loader: require.resolve('@storybook/source-loader'),
       enforce: 'pre'
     }
   )
   config.plugins.push(new DisableWarnings())
+
+  config.optimization = {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30 * 1024,
+      maxSize: maxAssetSize
+    }
+  }
+
+  config.performance = {
+    maxAssetSize: maxAssetSize
+  }
 
   return config
 }
