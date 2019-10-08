@@ -779,6 +779,7 @@ Usando el `type: datetimerange` la hora por defecto será `00:00:00`. Puedes mod
 | unlink-panels     | desvincular los dos paneles de fecha en el range-picker | boolean           | —                                        | false                |
 | prefix-icon       | Clase personalizada para el icono prefijado | string            | —                                        | ods-icon-date         |
 | clear-icon        | Clase personalizada para el icono `clear` | string            | —                                        | ods-icon-circle-close |
+| canSelectSeconds        | Permite seleccionar segundos en el time picker | boolean            | -                                        | false |
 
 ## Opciones del Picker
 

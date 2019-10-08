@@ -88,6 +88,7 @@ types.forEach(type => {
     :calendar-always-visible="calendarAlwaysVisible"
     :hidden-inputs="hiddenInputs"
     :default-time="defaultTime"
+    :canSelectSeconds="canSelectSeconds"
     @change="handleChange"
     :key="componentKey">
     </ods-date-picker>
@@ -105,7 +106,7 @@ types.forEach(type => {
       data () {
         return {
           dateValue: null,
-          reRenderWatchers: ['applyPickerOptions', 'rangeSeparator', 'align', 'unlinkPanels', 'onlyOneCalendar', 'calendarAlwaysVisible']
+          reRenderWatchers: ['applyPickerOptions', 'rangeSeparator', 'align', 'unlinkPanels', 'onlyOneCalendar', 'calendarAlwaysVisible', 'canSelectSeconds']
         }
       },
 
@@ -155,6 +156,9 @@ types.forEach(type => {
         },
         defaultTime: {
           default: type.type === 'datetime' ? text('Default time', '00:00:00') : type.type === 'datetimerange' ? array('Default time', ['00:00:00', '23:59:59']) : null
+        },
+        canSelectSeconds: {
+          default: (type.type === 'datetime' || type.type === 'datetimerange') ? boolean('Can select seconds', false) : null
         }
       },
 
