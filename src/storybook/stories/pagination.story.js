@@ -7,21 +7,20 @@ const stories = storiesOf('ODS/Pagination', module)
 const templateDefault = `
 <storybook-template>
   <ods-pagination
-    :small='small'
-    :pageSize='pageSize'
-    :total='total'
-    :pageCount='pageCount'
-    :currentPage='currentPage'
-    :layout='layout'
-    :pageSizes='pageSizes'
-    :popperClass='popperClass'
-    :prevText='prevText'
-    :nextText='nextText'
-    :disabled='disabled'
-    @size-change='handleSizeChange'
-    @current-change='handleCurrentChange'
-    @prev-click='handlePrevClick'
-    @next-click='handleNextClick'>
+    :pageSize="pageSize"
+    :total="total"
+    :pageCount="pageCount"
+    :currentPage="currentPage"
+    :layout="layout"
+    :pageSizes="pageSizes"
+    :popperClass="popperClass"
+    :prevText="prevText"
+    :nextText="nextText"
+    :disabled="disabled"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+    @prev-click="handlePrevClick"
+    @next-click="handleNextClick">
   </ods-pagination>
 </storybook-template>
   `
@@ -30,9 +29,6 @@ stories.add(
   () => ({
     template: templateDefault,
     props: {
-      small: {
-        default: boolean('Small', false)
-      },
       pageSize: {
         default: number('Page size', 10)
       },

@@ -6,7 +6,7 @@ const stories = storiesOf('ODS/Logo', module)
 const templateDefault = `
 <storybook-template tall>
   <ods-logo
-    ref='logo'
+    ref="logo"
     :style="[negative ? { backgroundColor: 'black' } : { backgroundColor: 'white' }]"
     :size="size"
     :suite="suite"
@@ -19,7 +19,7 @@ const templateDefault = `
     :simple="simple">
   </ods-logo>
   <br>
-  <ods-button @click='downloadLogo'>Download logo</ods-button>
+  <ods-button @click="downloadLogo">Download logo</ods-button>
 </storybook-template>
   `
 stories.add(
