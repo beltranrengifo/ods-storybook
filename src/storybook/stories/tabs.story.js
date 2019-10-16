@@ -9,25 +9,25 @@ const tabPane = 'Tab-pane'
 const templateDefault = `
 <storybook-template>
   <ods-tabs
-    v-model='activeTab'
-    :type='type'
-    :closable='closable'
-    :addable='addable'
-    :editable='editable'
-    :tab-position='tabPosition'
-    :stretch='stretch'
-    @edit='handleTabsEdit'
-    @tab-click='handleClick'
-    @tab-add='handleTabsEdit'
-    @tab-remove='handleTabsEdit'>
+    v-model="activeTab"
+    :type="type"
+    :closable="closable"
+    :addable="addable"
+    :editable="editable"
+    :tab-position="tabPosition"
+    :stretch="stretch"
+    @edit="handleTabsEdit"
+    @tab-click="handleClick"
+    @tab-add="handleTabsEdit"
+    @tab-remove="handleTabsEdit">
     <ods-tab-pane
-      v-for='(item, index) in tabs'
-      :key='item.name'
-      :label='item.title'
-      :name='item.name'
-      :disabled='disabled'
-      :closable='closableTab'
-      :lazy='lazy'
+      v-for="(item, index) in tabs"
+      :key="item.name"
+      :label="item.title"
+      :name="item.name"
+      :disabled="index === 0 ? disabled : null"
+      :closable="index === 0 ? closableTab : null"
+      :lazy="lazy"
     > {{item.content}}
     </ods-tab-pane>
   </ods-tabs>
@@ -55,10 +55,10 @@ stories.add(
       }
     },
     watch: {
-      '_props.label': function (newVal, oldVal){
+      '_props.label': function (newVal, oldVal) {
         this.labelText = newVal
       },
-      '_props.name': function (newVal, oldVal){
+      '_props.name': function (newVal, oldVal) {
         this.labelName = newVal
       }
     },
@@ -101,7 +101,7 @@ stories.add(
         default: text('Name', '', tabPane)
       },
       closableTab: {
-        default: boolean('Closable(tab)', false, tabPane)
+        default: boolean('Closable tab', false, tabPane)
       },
       lazy: {
         default: boolean('Lazy', false, tabPane)

@@ -2,27 +2,39 @@
 
 ## Project setup
 ```
-yarn install
+npm i
 ```
+
+Please use NPM instead of Yarn to install dependencies, as it is easier to update Storybook usign NPX.
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+yarn build
 ```
 
 ### Run your tests
 ```
-yarn run test
+yarn test
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+yarn lint
+```
+
+### Storybook dev server
+```
+yarn sb
+```
+
+### Storybook build
+```
+yarn sb:build
 ```
 
 ### Customize configuration
