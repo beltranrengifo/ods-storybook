@@ -1,9 +1,9 @@
 # Module
 Muestra información dentro de un contenedor `module`
 
-##  Uso Basico
+## Uso Basico
 
-`Module` incluye titulo, contenido y operaciones.
+Module incluye titulo, contenido y operaciones.
 
 Module se compone de cabecera y cuerpo. La cabecera es opcional y la colocación de su  contenido depende de un slot con nombre.
 
@@ -21,7 +21,7 @@ Module se compone de cabecera y cuerpo. La cabecera es opcional y la colocación
 </ods-module>
 ``` 
 
-##  Atributos
+## Atributos
 | Atributo   | Descripción                              | Tipo   | Valores aceptados  | Por defecto         |
 | ---------- | ---------------------------------------- | ------ | -----------------  | ------------------- |
 | header     | Titulo del module. También acepta DOM pasado por `slot#header` | string  | —                 | —                   |
