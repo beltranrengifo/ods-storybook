@@ -14,8 +14,8 @@ types.forEach(type => {
   type.hasHeaderSlot ? `
     <storybook-template>
       <ods-module
-        :body-style='bodyStyle'
-        :shadow='shadow'>
+        :body-style="bodyStyle"
+        :shadow="shadow">
         <div slot="header" style="position: relative">
           <span>Module Title</span>
           <ods-button
@@ -37,9 +37,9 @@ types.forEach(type => {
     : `
     <storybook-template>
       <ods-module
-        :header='header'
-        :body-style='bodyStyle'
-        :shadow='shadow'>
+        :header="header"
+        :body-style="bodyStyle"
+        :shadow="shadow">
         <div>
           Content of module
         </div>

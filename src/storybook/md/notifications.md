@@ -316,7 +316,7 @@ Configure el atributo `offset` para personalizar el desplazamiento de la notific
 
 ## Usando cadenas HTML
 
-`message` soporta cadenas HTML. Configure `dangerouslyUseHTMLString` a true y `message` se tratará como una cadena HTML.
+message soporta cadenas HTML. Configure `dangerouslyUseHTMLString` a true y `message` se tratará como una cadena HTML.
 
 ```
 <template>
@@ -346,7 +346,7 @@ Configure el atributo `offset` para personalizar el desplazamiento de la notific
 
 Aunque la propiedad `message` soporta cadenas HTML, el renderizado dinámico de HTML arbitrario en su sitio web puede ser muy peligroso porque puede conducir fácilmente a [ataques XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Por lo tanto, cuando `dangerouslyUseHTMLString` está a true, por favor asegúrese de que el contenido del mensaje es confiable, y **nunca** asigne `message` al contenido proporcionado por el usuario.
 
-##  Ocultar boton de cerrar
+## Ocultar boton de cerrar
 
 Es posible ocultar el botón de cerrar
 
@@ -375,7 +375,6 @@ Configure el atributo `showClose` como `false` para que el usuario no pueda cerr
   }
 </script>
 ```
- * _______
 
 ## Método global
 
@@ -385,7 +384,7 @@ El sistema tiene preinstalado el método global **`$notify`** para Vue.prototype
 
 Importar `Notification`:
 
-En este caso, debe llamar a `Notification(options)`. También se han registrado métodos para diferentes tipos, e.j. `Notification.success(options)`. 
+En este caso, debe llamar a `Notification(options)`. También se han registrado métodos para diferentes tipos, e.j. `Notification.success(options)`.
 
 Puede llamar al metodo `Notification.closeAll()` para cerrar manualmente todas las instancias.
 
@@ -410,7 +409,8 @@ import { Notification } from "element-ui"
 | offset                   | desplazamiento desde el borde superior de la pantalla. Cada instancia de notificación del mismo momento debe tener siempre el mismo desplazamiento. | number           | —                                        | 0           |
 
 ## Metodos
-`Notification` y `this.$notify` devuelven la instancia de la notificacion actual. Para cerrar manualmente la instancia, se puede llamar `close` para ello.
+
+Notification y `this.$notify` devuelven la instancia de la notificacion actual. Para cerrar manualmente la instancia, se puede llamar `close` para ello.
 
 | Metodo | Descripción            |
 | ------ | ---------------------- |

@@ -6,7 +6,7 @@ Guía al usuario para completar tareas de acuerdo con el proceso. Sus pasos pued
 
 Usa el atributo **`dots`** para ocultar los números de los pasos por un punto en el step actual
 
-Defina el atributo **`active`** con un valor de tipo `Number`, que indica el índice de pasos y comienza desde 0. 
+Defina el atributo **`active`** con un valor de tipo `Number`, que indica el índice de pasos y comienza desde 0.
 
 Puede definir el atributo **`space`** cuando es necesario fijar el ancho del paso que acepta el tipo `Boolean`. La unidad del atributo `space` es px. Si no está configurado, es responsive.
 
