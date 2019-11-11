@@ -11,64 +11,55 @@ const types = [
   { name: 'default', hasLabelSlot: false },
   { name: 'custom label', hasLabelSlot: true }
 ]
+// @tab-click="handleClick"
+const tabsPropsStr = `
+  v-model="activeTab"
+  :type="type"
+  :closable="closable"
+  :addable="addable"
+  :editable="editable"
+  :tab-position="tabPosition"
+  :stretch="stretch"
+  @tab-click="handleClick"
+  @edit="handleTabsEdit"
+  @tab-add="handleTabsEdit"
+  @tab-remove="handleTabsEdit"
+`
+const tabItemPropsStr = `
+  :key="item.name"
+  :label="item.title"
+  :name="item.name"
+  :disabled="disabled"
+  :closable="closableTab"
+  :lazy="lazy"
+`
 
 types.forEach(type => {
   const templateDefault =
   type.hasLabelSlot ? `
     <storybook-template>
-      <ods-tabs
-        v-model="activeTab"
-        :type="type"
-        :closable="closable"
-        :addable="addable"
-        :editable="editable"
-        :tab-position="tabPosition"
-        :stretch="stretch"
-        @edit="handleTabsEdit"
-        @tab-click="handleClick"
-        @tab-add="handleTabsEdit"
-        @tab-remove="handleTabsEdit">
+      <ods-tabs ${tabsPropsStr}>
         <ods-tab-pane
           v-for="(item, index) in tabs"
-          :key="item.name"
-          :label="item.title"
-          :name="item.name"
-          :disabled="disabled"
-          :closable="closableTab"
-          :lazy="lazy"
-        >
+          ${tabItemPropsStr}>
           <span slot="label">
             <ods-icon
               :name="item.icon"
               size="32"
-              class="ods-py-6 ods-d-block ods-text-center"/> {{item.content}} 
+              class="ods-py-6 ods-d-block ods-text-center"/> {{item.title}}
           </span>
+          <div>
+            {{ item.content }}
+          </div>
         </ods-tab-pane>
       </ods-tabs>
     </storybook-template>
-  `: `
+  ` : `
     <storybook-template>
-      <ods-tabs
-        v-model="activeTab"
-        :type="type"
-        :closable="closable"
-        :addable="addable"
-        :editable="editable"
-        :tab-position="tabPosition"
-        :stretch="stretch"
-        @edit="handleTabsEdit"
-        @tab-click="handleClick"
-        @tab-add="handleTabsEdit"
-        @tab-remove="handleTabsEdit">
+      <ods-tabs  ${tabsPropsStr}>
         <ods-tab-pane
           v-for="(item, index) in tabs"
-          :key="item.name"
-          :label="item.title"
-          :name="item.name"
-          :disabled="disabled"
-          :closable="closableTab"
-          :lazy="lazy"
-        > {{item.content}}
+          ${tabItemPropsStr}> {{item.content}}
         </ods-tab-pane>
       </ods-tabs>
     </storybook-template>
@@ -97,10 +88,10 @@ types.forEach(type => {
         }
       },
       watch: {
-        '_props.label': function (newVal, oldVal){
+        '_props.label' (newVal) {
           this.labelText = newVal
         },
-        '_props.name': function (newVal, oldVal){
+        '_props.name' (newVal) {
           this.labelName = newVal
         }
       },
